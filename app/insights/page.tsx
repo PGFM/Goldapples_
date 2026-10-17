@@ -6,6 +6,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { DarkSection } from "@/components/ui/DarkSection";
 import { SignalDivider } from "@/components/ui/SignalDivider";
 import { Button } from "@/components/ui/Button";
+import { RecentArticlesSection } from "@/components/insights/RecentArticlesSection";
 import {
   insightsIntro,
   ssrnPapers,
@@ -13,6 +14,13 @@ import {
   perspectives,
   insightsCta,
 } from "@/content/insights";
+import {
+  getCmsData,
+  getPublishedPapers,
+  getPublishedPosts,
+} from "@/lib/insights-cms";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: { absolute: seo.insights.title },
@@ -20,6 +28,11 @@ export const metadata: Metadata = {
 };
 
 export default function InsightsPage() {
+  const cmsData = getCmsData();
+  const cmsPapers = getPublishedPapers();
+  const cmsPosts = getPublishedPosts();
+  const showArticlesSection = cmsData.settings?.showArticlesSection ?? true;
+
   return (
     <>
       {/* 1. HERO: Dark Section */}
@@ -75,57 +88,80 @@ export default function InsightsPage() {
           </Reveal>
 
           <div className="grid gap-8 lg:grid-cols-2">
-            {ssrnPapers.items.map((paper, i) => (
-              <Reveal
-                key={paper.title}
-                delay={i * 0.08}
-                className="group flex flex-col justify-between border border-ink/12 bg-[#FAF8F5] p-8 sm:p-10 lg:p-12 transition-all duration-300 hover:border-gold-deep/50 hover:shadow-[0_16px_40px_rgba(18,16,13,0.06)]"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-4 border-b border-ink/10 pb-5">
-                    <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-gold-deep">
-                      SSRN Paper {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-steel">
-                      {paper.author}
-                    </span>
+            {cmsPapers.map((paper, i) => {
+              const paperLink = paper.externalUrl || paper.pdfUrl;
+              const isPdfOnly = !paper.externalUrl && !!paper.pdfUrl;
+
+              return (
+                <Reveal
+                  key={paper.id}
+                  delay={i * 0.08}
+                  className="group flex flex-col justify-between border border-ink/12 bg-[#FAF8F5] p-8 sm:p-10 lg:p-12 transition-all duration-300 hover:border-gold-deep/50 hover:shadow-[0_16px_40px_rgba(18,16,13,0.06)]"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-4 border-b border-ink/10 pb-5">
+                      <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-gold-deep">
+                        SSRN Paper {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-steel">
+                        {paper.author}
+                      </span>
+                    </div>
+
+                    <h3 className="mt-7 font-serif text-2xl leading-snug text-ink lg:text-[28px]">
+                      {paper.title}
+                    </h3>
+
+                    {paper.subtitle && (
+                      <p className="mt-2 font-serif text-[18px] italic leading-snug text-ink/75">
+                        {paper.subtitle}
+                      </p>
+                    )}
+
+                    <p className="mt-5 text-[15.5px] leading-[1.75] text-graphite">
+                      {paper.description}
+                    </p>
                   </div>
 
-                  <h3 className="mt-7 font-serif text-2xl leading-snug text-ink lg:text-[28px]">
-                    {paper.title}
-                  </h3>
+                  {paperLink && (
+                    <div className="mt-8 pt-6 border-t border-ink/8 flex flex-wrap items-center justify-between gap-4">
+                      <a
+                        href={paperLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-ink transition-colors group-hover:text-gold-deep"
+                      >
+                        <span>
+                          {isPdfOnly ? "Download PDF Paper" : "Read Paper on SSRN"}
+                        </span>
+                        <span
+                          aria-hidden="true"
+                          className="text-gold-deep transition-transform duration-300 group-hover:translate-x-1"
+                        >
+                          ↗
+                        </span>
+                      </a>
 
-                  {paper.subtitle && (
-                    <p className="mt-2 font-serif text-[18px] italic leading-snug text-ink/75">
-                      {paper.subtitle}
-                    </p>
+                      {paper.externalUrl && paper.pdfUrl && (
+                        <a
+                          href={paper.pdfUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-mono text-[11px] uppercase tracking-[0.12em] text-steel hover:text-gold-deep transition-colors"
+                        >
+                          Download PDF ↗
+                        </a>
+                      )}
+                    </div>
                   )}
-
-                  <p className="mt-5 text-[15.5px] leading-[1.75] text-graphite">
-                    {paper.description}
-                  </p>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-ink/8 flex items-center justify-between">
-                  <a
-                    href={paper.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-ink transition-colors group-hover:text-gold-deep"
-                  >
-                    <span>Read Paper on SSRN</span>
-                    <span aria-hidden="true" className="text-gold-deep transition-transform duration-300 group-hover:translate-x-1">
-                      ↗
-                    </span>
-                  </a>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </Container>
       </section>
 
-      {/* 3. ORIGINAL FRAMEWORKS AND TOOLS: Champagne Band */}
+      {/* 3. ORIGINAL FRAMEWORKS AND TOOLS (Applied Methodology): Champagne Band */}
       <section className="border-y border-ink/8 bg-champagne/40 py-20 lg:py-28">
         <Container>
           <Reveal className="mb-14">
@@ -165,7 +201,10 @@ export default function InsightsPage() {
         </Container>
       </section>
 
-      {/* 4. PERSPECTIVES WORTH EXPLORING: White Editorial Grid */}
+      {/* 4. RECENT ARTICLES (Toggleable from /admin, max 6 per page with pagination) */}
+      {showArticlesSection && <RecentArticlesSection posts={cmsPosts} />}
+
+      {/* 5. PERSPECTIVES WORTH EXPLORING: Reverted Static Editorial Grid */}
       <section className="bg-white py-20 lg:py-28">
         <Container>
           <Reveal className="mb-14">
@@ -187,7 +226,10 @@ export default function InsightsPage() {
                     <span className="font-mono text-xs font-bold tracking-[0.16em] text-gold-deep">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="h-[1px] w-8 bg-gold-deep/40" aria-hidden="true" />
+                    <span
+                      className="h-[1px] w-8 bg-gold-deep/40"
+                      aria-hidden="true"
+                    />
                   </div>
                   <h3 className="font-serif text-2xl leading-snug text-ink">
                     {item.title}
@@ -202,7 +244,7 @@ export default function InsightsPage() {
         </Container>
       </section>
 
-      {/* 5. CLOSING CTA: Dual Action Band */}
+      {/* 6. CLOSING CTA: Dual Action Band */}
       <section className="relative overflow-hidden bg-ink">
         <div className="absolute inset-0 bg-gradient-to-br from-ink via-ink/95 to-gold-deep/40" />
 

@@ -1,0 +1,169 @@
+{
+  "settings": {
+    "showArticlesSection": true
+  },
+  "papers": [
+    {
+      "id": "paper-leadership-alignment-theory",
+      "title": "Leadership Alignment Theory",
+      "subtitle": "Aligning Leadership Intent, Communication Delivery, and Emotional Intelligence",
+      "author": "J. Ayo Makinde",
+      "description": "A conceptual paper exploring the relationship between leadership intent, communication delivery, emotional intelligence and leadership effectiveness.",
+      "externalUrl": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6841866",
+      "pdfUrl": "",
+      "status": "published",
+      "publishedAt": "2026-08-15T10:00:00.000Z",
+      "updatedAt": "2026-10-17T16:42:27.404Z"
+    },
+    {
+      "id": "paper-communication-to-execution",
+      "title": "Communication to Execution (C2E)",
+      "subtitle": "",
+      "author": "J. Ayo Makinde",
+      "description": "Examines the path from leadership intention and communication to interpretation, alignment and organisational action.",
+      "externalUrl": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7155258",
+      "pdfUrl": "",
+      "status": "published",
+      "publishedAt": "2026-09-10T10:00:00.000Z",
+      "updatedAt": "2026-10-17T10:00:00.000Z"
+    }
+  ],
+  "posts": [
+    {
+      "id": "article-why-good-strategies-stall-after-announcement",
+      "title": "Why Sound Strategies Stall After the Announcement",
+      "slug": "why-sound-strategies-stall-after-the-announcement",
+      "excerpt": "Announcing a new direction is an event. Building the shared understanding required to execute it across teams is a disciplined communication process.",
+      "author": "J. Ayo Makinde",
+      "category": "Leadership Communication",
+      "featuredImage": "/Communication Advisory.jpg",
+      "featuredImageAlt": "Executive leadership strategy and communication advisory session",
+      "readTime": "5 min read",
+      "status": "published",
+      "publishedAt": "2026-10-12T09:00:00.000Z",
+      "updatedAt": "2026-10-17T09:00:00.000Z",
+      "blocks": [
+        {
+          "id": "b1",
+          "type": "paragraph",
+          "content": "Across boardrooms and public institutions, leaders invest months refining strategy documents only to watch implementation lose momentum weeks after the launch. The diagnosis is rarely a lack of intelligence or effort. More often, what was clear in the room where the decision was made becomes fragmented as it travels through the organisation."
+        },
+        {
+          "id": "b2",
+          "type": "quote",
+          "content": "People do not act on a strategy as it was written. They act on what that strategy means for their role, their priorities and their daily decisions.",
+          "attribution": "J. Ayo Makinde"
+        },
+        {
+          "id": "b3",
+          "type": "heading",
+          "level": 2,
+          "content": "Where Meaning Drifts Between Intention and Execution"
+        },
+        {
+          "id": "b4",
+          "type": "paragraph",
+          "content": "When senior leaders announce a priority without testing how middle managers and frontline teams interpret it, three predictable gaps emerge:"
+        },
+        {
+          "id": "b5",
+          "type": "list",
+          "listStyle": "ordered",
+          "items": [
+            "Competing interpretations of what takes precedence over existing work.",
+            "Hesitation at handover points where departmental responsibilities overlap.",
+            "Delayed feedback when teams encounter practical obstacles on the ground."
+          ]
+        },
+        {
+          "id": "b6",
+          "type": "callout",
+          "calloutTitle": "Practical Takeaway",
+          "content": "Before asking why teams are moving slowly, examine what each layer of the organisation understood the decision to mean."
+        }
+      ]
+    },
+    {
+      "id": "article-diagnosing-communication-problems-before-prescribing",
+      "title": "Diagnosing Communication Problems Before Prescribing Solutions",
+      "slug": "diagnosing-communication-problems-before-prescribing-solutions",
+      "excerpt": "When a message fails to land, the instinct is often to speak louder or redesign the campaign. Yet the real issue may be trust, context or weak feedback.",
+      "author": "J. Ayo Makinde",
+      "category": "Communication Intelligence",
+      "featuredImage": "/Executive Communication Academy.jpg",
+      "featuredImageAlt": "Goldapples communication diagnostics workshop",
+      "readTime": "4 min read",
+      "status": "published",
+      "publishedAt": "2026-10-08T09:00:00.000Z",
+      "updatedAt": "2026-10-17T09:00:00.000Z",
+      "blocks": [
+        {
+          "id": "b1",
+          "type": "paragraph",
+          "content": "When organisations experience stakeholder pushback or internal confusion, the default response is frequently tactical: issue another press release, hold another town hall, or commission a new deck. Activity increases, but clarity does not."
+        },
+        {
+          "id": "b2",
+          "type": "heading",
+          "level": 2,
+          "content": "Four Diagnostic Questions That Change the Response"
+        },
+        {
+          "id": "b3",
+          "type": "list",
+          "listStyle": "unordered",
+          "items": [
+            "What did leadership actually intend to achieve?",
+            "What did the audience hear and understand based on past experience?",
+            "Where did meaning shift along the chain of communication?",
+            "What conditions are needed for credible dialogue and action?"
+          ]
+        },
+        {
+          "id": "b4",
+          "type": "paragraph",
+          "content": "By investigating the underlying communication condition first, institutions avoid wasting resources on louder messaging when the true requirement is clearer direction, stronger listening or stakeholder alignment."
+        }
+      ]
+    },
+    {
+      "id": "article-translating-policy-reforms-into-public-understanding",
+      "title": "Translating Complex Policy Reforms into Public Understanding",
+      "slug": "translating-complex-policy-reforms-into-public-understanding",
+      "excerpt": "How public institutions, development programmes and journalists can bridge the gap between technical policy language and everyday citizen realities.",
+      "author": "J. Ayo Makinde",
+      "category": "Development Communication",
+      "featuredImage": "/Development Communication Practice.jpg",
+      "featuredImageAlt": "Development communication and media engagement session",
+      "readTime": "6 min read",
+      "status": "published",
+      "publishedAt": "2026-10-02T09:00:00.000Z",
+      "updatedAt": "2026-10-17T09:00:00.000Z",
+      "blocks": [
+        {
+          "id": "b1",
+          "type": "paragraph",
+          "content": "Public reforms and development interventions often struggle not because their technical design is flawed, but because the citizens and communities affected by them cannot see how the policy connects to their daily lives."
+        },
+        {
+          "id": "b2",
+          "type": "callout",
+          "calloutTitle": "Development Communication Principle",
+          "content": "Technical accuracy and human meaning are not opposites. Public-interest communication succeeds when rigorous evidence is expressed through stories people can recognise and verify."
+        },
+        {
+          "id": "b3",
+          "type": "heading",
+          "level": 2,
+          "content": "The Role of Informed Media and Institutional Clarity"
+        },
+        {
+          "id": "b4",
+          "type": "paragraph",
+          "content": "When journalists are equipped to interpret sector data and public institutions communicate their mandates transparently, public conversation moves beyond announcements toward informed scrutiny and constructive participation."
+        }
+      ]
+    }
+  ],
+  "media": []
+}
