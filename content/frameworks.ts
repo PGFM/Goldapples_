@@ -1,96 +1,116 @@
 export const frameworksIntro = {
   eyebrow: "Frameworks",
-  heading: "Our Communication Frameworks",
-  lead: "Original thinking for practical communication problems.",
-  body: "Goldapples is building a body of frameworks to help leaders and organisations understand communication beyond information sharing — guiding our advisory work, training, diagnostics and thought leadership.",
+  heading: "Our Approach and Frameworks",
+  lead: "What was said is only the beginning.",
+  body: "People do not always act on messages as they were intended. They act on what those messages mean to them. We look beyond message delivery to the human process of interpretation, understanding, trust and action.",
+};
+
+export const communicationIntelligence = {
+  eyebrow: "Human Communication Intelligence",
+  heading: "Human Communication Intelligence",
+  paragraphs: [
+    "At Goldapples, Human Communication Intelligence is the capacity to understand how people create, convey, interpret and act upon meaning.",
+    "We apply that understanding to promote more conscious, responsible and effective communication that strengthens relationships, leadership and organisational performance.",
+  ],
+  questionsIntro: "Four questions matter:",
+  questions: [
+    { number: "01", question: "What did we intend?" },
+    { number: "02", question: "What did people understand?" },
+    { number: "03", question: "Where did meaning change?" },
+    { number: "04", question: "What happened next?" },
+  ],
+};
+
+export const awarenessPrinciples = {
+  eyebrow: "Principles",
+  heading: "From Awareness to Better Outcomes",
+  items: [
+    {
+      title: "Communication consciousness",
+      description: "Notice how communication works and affects others.",
+    },
+    {
+      title: "Communication responsibility",
+      description:
+        "Choose how to communicate with integrity and regard for consequences.",
+    },
+    {
+      title: "Communication effectiveness",
+      description:
+        "Enable clearer understanding and purposeful responses, including where people disagree.",
+    },
+  ],
+  closing:
+    "These are principles guiding our practice, not claims that communication alone resolves every conflict or performance problem.",
 };
 
 export const frameworks = [
   {
-    id: "physics-of-communication",
-    title: "Physics of Communication",
-    paragraphs: [
-      "Communication behaves like movement. A message has a source, a force, a direction, a medium, resistance, distortion and an effect.",
-      "This framework explains why a message that seems clear at the source can arrive weakened, distorted or completely misunderstood.",
-      "It helps leaders examine:"
-    ],
-    bullets: [
-      "the force behind a message;",
-      "the medium carrying it;",
-      "the resistance in the environment;",
-      "the distortion introduced along the way;",
-      "the actual effect on the audience."
-    ]
-  },
-  {
     id: "meaning-framework",
     title: "The M.E.A.N.I.N.G. Framework",
     paragraphs: [
-      "This is a Goldapples communication tool that helps leaders, teams, and institutions design messages that do more than just pass information.",
-      "It helps organisations think through how meaning is created, passed, received, interpreted and acted upon."
+      "A practical way to examine how a message moves from intention through interpretation towards understanding and action.",
     ],
-    bullets: [
-      "A message may be well written but still fail.",
-      "A speech may be powerful but still misunderstood.",
-      "A policy may be announced but still resisted.",
-      "An instruction may be clear to the sender, but confusing to the receiver."
+  },
+  {
+    id: "physics-of-communication",
+    title: "Communication-to-Execution (C2E)",
+    paragraphs: [
+      "Explores what happens between leadership intention and implementation.",
     ],
-    closing: "Goldapples uses this framework to help leaders and organisations reduce ambiguity, prevent meaning drift, improve message clarity and strengthen communication outcomes."
+    closing: "Intent  →  Message  →  Transmission  →  Interpretation  →  Alignment  →  Action",
   },
   {
     id: "leadership-alignment-framework",
-    title: "Leadership Alignment Framework",
+    title: "Leadership Alignment Tools",
     paragraphs: [
-      "The Leadership Alignment Framework helps leadership teams ensure that strategy, message, behaviour and execution are moving in the same direction. It focuses on the relationship between:"
+      "Examine the relationship among leadership intent, communication delivery, and emotional intelligence, and identify where misalignment may weaken trust or execution.",
     ],
-    bullets: [
-      "leadership intent;",
-      "message clarity;",
-      "internal interpretation;",
-      "behavioural consistency;",
-      "stakeholder trust;",
-      "execution outcomes."
-    ]
-  },
-  {
-    id: "leadership-communication-lab",
-    title: "Leadership Communication Lab",
-    paragraphs: [
-      "The Leadership Communication Lab is a practical learning environment where leaders test, refine and improve how they communicate decisions, strategy, change and difficult messages.",
-      "It is built around scenarios, simulations, peer feedback and communication diagnostics."
-    ]
   },
 ];
 
+export const howWeKnowItWorks = {
+  eyebrow: "Practical Evaluation",
+  heading: "How Do We Know Communication Is Working?",
+  intro: "The useful questions are practical:",
+  questions: [
+    "Are priorities better understood?",
+    "Are key audiences clearer about the decision?",
+    "Are questions being heard?",
+    "Is the intended action happening?",
+  ],
+  closing:
+    "The measures depend on the challenge. We do not mistake activity or agreement for understanding.",
+};
+
 export const frameworksCta = {
-  heading: "Interested in applying these frameworks in your organisation?",
-  cta: { label: "Book a Framework Session", href: "/contact" },
+  eyebrow: "One Principle We Hold Close",
+  heading: "Mutual understanding does not mean mutual agreement.",
+  body: "Good communication makes differences clearer and decisions more deliberate. It does not require everyone to think alike.",
+  primaryCta: { label: "Discuss a Communication Challenge", href: "/contact" },
+  secondaryCta: { label: "Explore Our Insights", href: "/insights" },
+  cta: { label: "Discuss a Communication Challenge", href: "/contact" },
 };
 
 export const frameworksHowWeWork = [
   {
     number: "01",
-    title: "Diagnose",
-    description: "Understand the communication problem, the context and the people affected.",
+    title: "What did we intend?",
+    description: "",
   },
   {
     number: "02",
-    title: "Clarify",
-    description: "Define the real message, the intended meaning, and the outcome required.",
+    title: "What did people understand?",
+    description: "",
   },
   {
     number: "03",
-    title: "Design",
-    description: "Build the approaches, tools, messages or systems suited to the context.",
+    title: "Where did meaning change?",
+    description: "",
   },
   {
     number: "04",
-    title: "Deliver",
-    description: "Support implementation through facilitation, coaching, training or advisory sessions.",
-  },
-  {
-    number: "05",
-    title: "Review",
-    description: "Assess what changed, what was understood, and what needs reinforcement.",
+    title: "What happened next?",
+    description: "",
   },
 ];

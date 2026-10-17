@@ -3,20 +3,14 @@
 import { useState } from "react";
 
 const nodes = [
-  { id: "source", x: 40, y: 90, label: "Source" },
-  { id: "force", x: 144, y: 40, label: "Force" },
-  { id: "medium", x: 248, y: 90, label: "Medium" },
-  { id: "resistance", x: 352, y: 40, label: "Resistance" },
-  { id: "distortion", x: 456, y: 90, label: "Distortion" },
-  { id: "effect", x: 560, y: 40, label: "Effect" },
+  { id: "intent", x: 40, y: 90, label: "Intent" },
+  { id: "message", x: 144, y: 40, label: "Message" },
+  { id: "transmission", x: 248, y: 90, label: "Transmission" },
+  { id: "interpretation", x: 352, y: 40, label: "Interpretation" },
+  { id: "alignment", x: 456, y: 90, label: "Alignment" },
+  { id: "action", x: 560, y: 40, label: "Action" },
 ];
 
-/**
- * The Physics of Communication chain — source, force, medium, resistance,
- * distortion, effect — as a bespoke line-art diagram. Per design.md §8, elements
- * highlight as the cursor passes near them; this doubles as an explanatory
- * device (desktop only, degrades to the static chain everywhere else).
- */
 export function PhysicsOfCommunicationDiagram() {
   const [active, setActive] = useState<string | null>(null);
 
@@ -46,7 +40,7 @@ export function PhysicsOfCommunicationDiagram() {
       onMouseMove={handleMove}
       onMouseLeave={() => setActive(null)}
       role="img"
-      aria-label="Diagram: a message travels from source, through force and medium, meeting resistance, to reach its effect on the audience."
+      aria-label="Diagram: Communication-to-Execution path from Intent, Message, Transmission, Interpretation, and Alignment to Action."
     >
       {nodes.slice(0, -1).map((node, i) => {
         const next = nodes[i + 1];

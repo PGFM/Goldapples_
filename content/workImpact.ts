@@ -1,52 +1,84 @@
 export const workImpactIntro = {
   eyebrow: "Work and Impact",
   heading: "Work and Impact",
-  lead: "Practical communication support for real-world challenges.",
-  body: "Goldapples works with organisations, leaders and programme teams to improve communication where clarity, trust and public value matter — advisory support, training, facilitation, media engagement, development communication and strategic narrative design.",
-  note: "Each case study follows: Client/Sector — Challenge — Goldapples Approach — What Changed — Key Insight.",
+  lead: "What changed because communication happened?",
+  body: "A workshop held is an activity. A message delivered is an output. Neither automatically tells us whether understanding improved. We look for the practical difference that communication can make: clearer understanding, stronger capability, more informed engagement, a better basis for action, and, hopefully, better outcomes.",
+  note: "Selected Work and Experience",
 };
 
 export const caseStudies = [
   {
-    title: "Strengthening Media Capacity for Public-Interest Reporting",
-    sector: "Development communication / media capacity building",
-    image: "/assets/photography/journalists-session.jpg",
+    title: "NADDC: Strengthening Automotive Industry Reporting",
+    sector: "Media Capacity Building | Data Journalism | Policy Communication",
+    tags: ["Media Capacity Building", "Data Journalism", "Policy Communication"],
     challenge:
-      "Journalists needed stronger tools for reporting complex public-interest issues accurately and usefully.",
+      "Nigeria's automotive policies, industry data and development initiatives require journalists who can interpret technical information, question official claims, and communicate their implications to the public.",
+    workLabel: "The work",
     approach:
-      "Goldapples designed and delivered media engagement sessions on narrative clarity, responsible reporting and public-interest storytelling.",
-    whatChanged:
-      "Participants gained practical tools for framing complex issues and connecting technical subjects to human realities.",
+      "Goldapples developed a practical Data and AI Masterclass for CICAN journalists, titled Reporting Nigeria's Automotive Transformation: From Policy to Production and Public Impact. The programme combined sector knowledge, reporting assessments, data analysis, evidence verification and human-centred storytelling to strengthen automotive industry journalism.",
     keyInsight:
-      "Public-interest communication is more effective when technical issues are translated into human meaning.",
+      "Better-informed reporting can move public discourse beyond policy announcements towards independent scrutiny, industry accountability and a clearer understanding of how automotive development affects Nigerians.",
   },
   {
-    title: "Executive Communication for High-Stakes Environments",
-    sector: "Leadership development / executive education",
-    image: "/assets/photography/academy-session.jpg",
+    title: "PACE: Development Communication and Media Engagement",
+    sector: "Development Communication | Media Capacity Building | Public Narrative",
+    tags: ["Development Communication", "Media Capacity Building", "Public Narrative"],
     challenge:
-      "Senior professionals faced situations where poor communication could affect trust, credibility and stakeholder confidence.",
+      "Governance and reform issues can be complex to explain and easy to misunderstand.",
+    workLabel: "The work",
     approach:
-      "Goldapples applied the M.E.A.N.I.N.G. Framework in a practical learning experience on credibility, message discipline and high-stakes communication behaviour.",
-    whatChanged:
-      "Participants were better equipped to structure messages, respond under pressure and communicate with intentionality.",
-    keyInsight: "Leadership communication is not performance — it is a responsibility.",
+      "Through the FCDO-supported PACE programme, Goldapples undertook media capacity-building and communication activities involving media professionals, programme actors and civil society stakeholders, with an emphasis on public-interest communication, storytelling and engagement.",
+    keyInsight:
+      "Clearer reporting and more accessible narratives can help people engage with reform issues more informed.",
   },
   {
-    title: "Communication Support for Institutional Alignment",
-    sector: "Organisational communication",
-    image: "/assets/photography/founder-session.jpg",
+    title: "Senate Committee: Strengthening Institutional Communication and Public Engagement",
+    sector: "Strategic Communication | Institutional Visibility | Public Engagement",
+    tags: ["Strategic Communication", "Institutional Visibility", "Public Engagement"],
     challenge:
-      "A leadership message was losing meaning as it travelled through teams and implementation structures.",
+      "Public institutions can perform important functions without citizens fully understanding their mandates, responsibilities or how to engage with them.",
+    workLabel: "The work",
     approach:
-      "Goldapples applied diagnostic thinking to clarify the intended message, identify points of distortion and improve the internal communication path.",
-    whatChanged:
-      "The organisation gained a clearer understanding of how to align message, channel, leadership behaviour and stakeholder interpretation.",
-    keyInsight: "Execution improves when meaning is managed deliberately.",
+      "Goldapples developed a strategic communication presentation for the Senate Committee on Ethics, Privileges and Public Complaints, addressing internal communication, public awareness, stakeholder engagement, digital communication and strategic partnerships.",
+    keyInsight:
+      "Clearer institutional communication can strengthen public trust, improve accessibility and encourage more meaningful citizen participation.",
+  },
+  {
+    title: "Sustainable Development Goals and Youth Engagement",
+    sector: "Experience Informing Our Practice",
+    tags: ["Experience Informing Our Practice"],
+    challenge:
+      "Global development priorities can feel remote from everyday life, particularly for young audiences.",
+    workLabel: "Relevant experience",
+    approach:
+      "Our leadership background includes multistate youth advocacy work around the Sustainable Development Goals, focused on making development issues understandable and relevant to young people.",
+    keyInsight:
+      "People are better placed to participate when they can connect broad goals to their own circumstances.",
+  },
+  {
+    title: "Media Capacity Building and Strategic Storytelling",
+    sector: "Journalism | Learning | Public-Interest Communication",
+    tags: ["Journalism", "Learning", "Public-Interest Communication"],
+    challenge:
+      "Technical public-interest issues require both accuracy and stories that audiences can follow.",
+    workLabel: "Relevant experience",
+    approach:
+      "Our broadcasting, journalism and facilitation background informs learning interventions in reporting, interviewing, storytelling and communicating complex issues.",
+    keyInsight:
+      "Professional communication capability can strengthen the quality and accessibility of public conversations.",
   },
 ];
 
+export const howWeAssessImpact = {
+  eyebrow: "Evaluation",
+  heading: "How We Assess Impact",
+  paragraphs: [
+    "For each engagement, the meaningful measures depend on the brief. We examine what audiences understood, what capabilities changed, how stakeholders engaged and what action followed, where evidence is available.",
+    "Project outcomes and client names are published only when they can be substantiated and cleared for publication.",
+  ],
+};
+
 export const workImpactCta = {
-  heading: "Have a communication challenge that requires strategic support?",
-  cta: { label: "Discuss a Project With Us", href: "/contact" },
+  heading: "Have a Communication Challenge Worth Solving?",
+  cta: { label: "Discuss a Project", href: "/contact" },
 };

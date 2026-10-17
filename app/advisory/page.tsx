@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function AdvisoryPage() {
   return (
     <>
-      {/* 1. Intro (Dark solid hero header - using About page Intro layout) */}
+      {/* 1. Intro (Dark solid hero header) */}
       <DarkSection className="pt-28 pb-12 lg:pt-36 lg:pb-16 relative">
         <Container className="relative z-10 lg:flex lg:flex-col lg:items-center lg:text-center">
           <div className="max-w-[700px] lg:mx-auto">
@@ -32,7 +32,7 @@ export default function AdvisoryPage() {
               <p className="font-mono text-[11px] font-bold tracking-[0.2em] uppercase text-gold-deep mb-6">
                 {advisoryIntro.eyebrow}
               </p>
-              <h1 className="mt-2 font-serif text-5xl leading-[1.1] text-white lg:text-6xl tracking-tight">
+              <h1 className="mt-2 font-serif text-3xl sm:text-4xl md:text-5xl leading-[1.1] text-white lg:text-6xl tracking-tight">
                 {advisoryIntro.heading}
               </h1>
             </Reveal>
@@ -42,13 +42,16 @@ export default function AdvisoryPage() {
               </p>
             </Reveal>
             <div className="flex flex-col gap-6">
-              <Reveal
-                as="p"
-                delay={0.2}
-                className="text-white/60 text-[15px] leading-[1.7] max-w-[65ch] font-sans lg:text-justify lg:mx-auto"
-              >
-                {advisoryIntro.body}
-              </Reveal>
+              {advisoryIntro.paragraphs.map((p, i) => (
+                <Reveal
+                  key={i}
+                  as="p"
+                  delay={0.2 + i * 0.1}
+                  className="text-white/60 text-[15px] leading-[1.7] max-w-[65ch] font-sans lg:text-justify lg:mx-auto"
+                >
+                  {p}
+                </Reveal>
+              ))}
             </div>
           </div>
         </Container>
@@ -60,13 +63,13 @@ export default function AdvisoryPage() {
         </Container>
       </DarkSection>
 
-      {/* 2. Advisory Areas (Grid of colored boxes - using About page "What Makes Us Different" layout) */}
+      {/* 2. Where We Help (Grid of colored boxes) */}
       <section className="bg-white py-24 lg:py-32">
         <Container className="relative z-10 lg:flex lg:flex-col lg:items-center lg:text-center">
           <Reveal>
-            <Eyebrow>Advisory Areas</Eyebrow>
+            <Eyebrow>Where We Help</Eyebrow>
           </Reveal>
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-left">
             {advisoryAreas.map((area, i) => {
               const styles = [
                 {
@@ -125,7 +128,7 @@ export default function AdvisoryPage() {
         </Container>
       </section>
 
-      {/* 3. How We Work (Timeline on a Champagne band - using About page "Evolution" layout) */}
+      {/* 3. How We Work (Timeline on a Champagne band) */}
       <section className="bg-champagne py-24 lg:py-32">
         <Container className="grid gap-12 lg:grid-cols-12 items-start">
           <div className="lg:col-span-4">
@@ -169,9 +172,12 @@ export default function AdvisoryPage() {
           <Reveal className="w-full">
             <SignalDivider tone="gold" className="mb-16" />
             
-            <h2 className="font-serif text-[2rem] leading-[1.15] text-white lg:text-[2.5rem] mb-10 max-w-[28ch] mx-auto">
+            <h2 className="font-serif text-[2rem] leading-[1.15] text-white lg:text-[2.5rem] mb-6 max-w-[28ch] mx-auto">
               {advisoryCta.heading}
             </h2>
+            <p className="text-champagne/75 text-[18px] leading-relaxed mb-10 max-w-[45ch] mx-auto">
+              {advisoryCta.body}
+            </p>
             <Button href={advisoryCta.cta.href} variant="gold" className="px-10 h-14 text-base">
               {advisoryCta.cta.label}
             </Button>

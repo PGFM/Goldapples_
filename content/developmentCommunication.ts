@@ -1,64 +1,68 @@
 export const devCommIntro = {
   eyebrow: "Development Communication",
   heading: "Development Communication Practice",
-  lead: "Making public-interest work clearer, more human and more effective.",
-  body: "Development programmes often fall short of their full impact because the people they're meant to serve don't receive the message, or don't understand it as intended. Goldapples supports development partners, civil society organisations, media actors and public institutions with communication strategies that improve understanding, engagement and action.",
+  lead: "Making development meaningful through communication and storytelling.",
+  paragraphs: [
+    'A programme may be technically sound and still leave people asking, "What does this mean for me?"',
+    "Development works through people. They need to understand what is changing, why it matters, how it affects them and where their voices fit.",
+    "Goldapples combines strategic communication, human-centred storytelling and media engagement to connect development priorities with the people they are intended to serve.",
+  ],
+  body: 'A programme may be technically sound and still leave people asking, "What does this mean for me?" Development works through people. They need to understand what is changing, why it matters, how it affects them and where their voices fit. Goldapples combines strategic communication, human-centred storytelling and media engagement to connect development priorities with the people they are intended to serve.',
 };
 
 export const whatWeSupport = [
   {
-    id: "programme-communication-strategy",
-    title: "Programme Communication Strategy",
-    body: "Communication approaches that support implementation, visibility, stakeholder engagement and behavioural outcomes.",
+    id: "development-communication-strategy",
+    title: "Development Communication Strategy",
+    body: "Give programmes a communication approach that supports stakeholder understanding, participation, and implementation, not just visibility.",
+  },
+  {
+    id: "storytelling-and-public-narratives",
+    title: "Storytelling and Public Narratives",
+    body: "Turn complex issues into credible, relatable stories that reflect lived experiences, give communities a voice and help audiences understand why the work matters.",
   },
   {
     id: "media-engagement-and-capacity-building",
     title: "Media Engagement and Capacity Building",
-    body: "Media training, journalist workshops, editorial engagement and public-interest reporting interventions.",
+    body: "Strengthen public-interest reporting and informed coverage through journalist training, editorial learning and purposeful media partnerships.",
   },
   {
-    id: "behaviour-and-stakeholder-communication",
-    title: "Behaviour and Stakeholder Communication",
-    body: "Understanding audiences and designing messages that respond to real concerns, motivations and trust conditions.",
-  },
-  {
-    id: "public-narrative-and-storytelling",
-    title: "Public Narrative and Storytelling",
-    body: "Moving beyond technical reporting into human-centred stories that show why issues matter.",
+    id: "stakeholder-and-community-engagement",
+    title: "Stakeholder and Community Engagement",
+    body: "Listen to what communities know, question and trust. Use those insights to shape clearer communication and more meaningful participation.",
   },
   {
     id: "governance-and-reform-communication",
     title: "Governance and Reform Communication",
-    body: "Communication around policy, governance, accountability, service delivery, climate, social protection, public health and institutional reform.",
+    body: "Support public understanding of governance, accountability, climate, health, social protection, service delivery and institutional change.",
   },
 ];
 
 export const ourApproach = {
-  eyebrow: "Our Approach",
+  eyebrow: "How We Approach the Work",
   points: [
     {
       title: "Human-centred",
-      description:
-        "People, communities and lived realities sit at the centre of the message.",
+      description: "Begin with people's experiences, not programme activities.",
     },
     {
       title: "Context-aware",
-      description:
-        "Communication is designed around culture, language, trust and access.",
+      description: "Respect culture, language, access and trust.",
     },
     {
       title: "Evidence-informed",
-      description: "Data, field insight and stakeholder understanding guide our choices.",
+      description: "Use credible information and audience insight.",
     },
     {
       title: "Action-oriented",
       description:
-        "Communication is designed to support understanding, decision-making and implementation.",
+        "Make it easier for people to understand, participate and respond.",
     },
   ],
 };
 
 export const devCommCta = {
-  heading: "Working on a development, governance or public-interest programme?",
+  heading:
+    "Your programme may be doing important work, but how can they own it beyond the programme timeline?",
   cta: { label: "Discuss a Development Communication Brief", href: "/contact" },
 };

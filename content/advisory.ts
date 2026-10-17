@@ -1,8 +1,12 @@
 export const advisoryIntro = {
   eyebrow: "Advisory",
   heading: "Communication Advisory",
-  lead: "Helping leaders and institutions communicate with clarity, credibility and consequence.",
-  body: "Communication problems often surface as resistance, confusion, poor execution, public misunderstanding or reputational weakness — but the root issue usually runs deeper. Goldapples helps leaders and organisations diagnose these problems and design communication approaches that improve understanding, trust and action.",
+  lead: "Before you fix the message, find the problem.",
+  paragraphs: [
+    "A CEO sees execution slowing. An official faces resistance to a reform. A management team keeps repeating instructions that people interpret differently.",
+    "The visible problem may be communication. Or communication may be revealing a deeper problem. We help you tell the difference.",
+  ],
+  body: "A CEO sees execution slowing. An official faces resistance to a reform. A management team keeps repeating instructions that people interpret differently. The visible problem may be communication. Or communication may be revealing a deeper problem. We help you tell the difference.",
 };
 
 export const advisoryAreas = [
@@ -10,31 +14,31 @@ export const advisoryAreas = [
     id: "leadership-communication",
     title: "Leadership Communication",
     image: "/assets/Advisory_areas/Leadership Communication.jpg",
-    body: "We support leaders communicating vision, decisions, change, values and expectations across teams and stakeholders: executive messaging, speech and presentation advisory, leadership presence, internal alignment, difficult conversations, board and stakeholder communication.",
+    body: "When direction is clear in a leader's mind but not in the team's, we help strengthen how priorities, decisions and difficult messages are communicated.",
   },
   {
     id: "organisational-alignment",
-    title: "Organisational Alignment",
+    title: "Organisational Communication and Alignment",
     image: "/assets/Advisory_areas/Organisational Alignment.jpg",
-    body: "We help organisations close meaning gaps between leadership intent and staff interpretation: internal communication diagnostics, leadership alignment sessions, team communication reviews, message cascade design, culture and values communication.",
+    body: "When departments interpret strategy differently, we examine internal messages, feedback, leadership alignment and the journey from instruction to action.",
   },
   {
     id: "government-and-public-institution-communication",
     title: "Government and Public Institution Communication",
     image: "/assets/Advisory_areas/Government and Public Institution Communication.jpg",
-    body: "We support public institutions communicating policies, reforms and decisions in ways citizens, staff and stakeholders can understand: reform and policy messaging, citizen-facing communication, inter-agency communication, stakeholder mapping.",
+    body: "When reforms or policies need public understanding, we help institutions communicate clearly, listen to concerns and prepare stakeholder engagement.",
   },
   {
     id: "crisis-and-high-stakes-communication",
     title: "Crisis and High-Stakes Communication",
     image: "/assets/Advisory_areas/Crisis and high stake communication.jpg",
-    body: "We help leaders prepare for moments where words, timing and interpretation carry serious consequences: crisis messaging, media response preparation, scenario planning, spokesperson preparation, post-crisis review.",
+    body: "When confidence is fragile, and decisions are under scrutiny, we help leaders prepare credible messages, spokespeople and communication responses.",
   },
   {
     id: "communication-diagnostics",
     title: "Communication Diagnostics",
     image: "/assets/Advisory_areas/Communication Diagnostics.jpg",
-    body: "We identify where communication is breaking down and why — examining message clarity, audience interpretation, leadership alignment, channel effectiveness, trust barriers, feedback loops and stakeholder response.",
+    body: "When another workshop or campaign may not be the answer, we assess clarity, meaning, trust, communication channels and feedback to identify the actual gaps.",
   },
 ];
 
@@ -43,36 +47,36 @@ export const advisoryHowWeWork = [
     number: "01",
     title: "Diagnose",
     description:
-      "Understand the communication problem, the context and the people affected.",
+      "Understand the challenge, the people affected and where communication breaks down.",
   },
   {
     number: "02",
     title: "Clarify",
     description:
-      "Define the real message, the intended meaning, and the outcome required.",
+      "Agree on what needs to be understood and what an effective response should achieve.",
   },
   {
     number: "03",
     title: "Design",
     description:
-      "Build the approaches, tools, messages or systems suited to the context.",
+      "Choose interventions suited to the problem and its context.",
   },
   {
     number: "04",
     title: "Deliver",
     description:
-      "Support implementation through facilitation, coaching, training or advisory sessions.",
+      "Support implementation through advisory, facilitation, coaching, training or communication products.",
   },
   {
     number: "05",
     title: "Review",
     description:
-      "Assess what changed, what was understood, and what needs reinforcement.",
+      "Examine understanding, engagement and other relevant signs of change.",
   },
 ];
 
 export const advisoryCta = {
-  heading:
-    "Need support with a leadership, institutional or stakeholder communication challenge?",
+  heading: "The first step isn't another message.",
+  body: "It's a conversation about what isn't working.",
   cta: { label: "Book an Advisory Consultation", href: "/contact" },
 };
