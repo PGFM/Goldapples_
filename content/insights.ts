@@ -87,3 +87,52 @@ export const insightsCta = {
   primaryCta: { label: "Explore Our Research", href: "#ssrn-papers" },
   secondaryCta: { label: "Start a Conversation", href: "/contact" },
 };
+
+export type InsightCategory = {
+  id: string;
+  label: string;
+  description: string;
+};
+
+export type InsightArticle = {
+  title: string;
+  category: string;
+  description?: string;
+};
+
+export const categories: InsightCategory[] = [
+  {
+    id: "research",
+    label: "Published Research",
+    description: "Papers available on SSRN exploring leadership alignment and execution.",
+  },
+  {
+    id: "frameworks",
+    label: "Original Frameworks",
+    description: "Developing Goldapples frameworks and diagnostic tools.",
+  },
+  {
+    id: "perspectives",
+    label: "Perspectives",
+    description: "Practical perspectives on understanding, clarity and leadership responsibility.",
+  },
+];
+
+export const articles: InsightArticle[] = [
+  ...ssrnPapers.items.map((item) => ({
+    title: item.title,
+    category: "research",
+    description: item.description,
+  })),
+  ...originalFrameworks.items.map((item) => ({
+    title: item.title,
+    category: "frameworks",
+    description: item.description,
+  })),
+  ...perspectives.items.map((item) => ({
+    title: item.title,
+    category: "perspectives",
+    description: item.description,
+  })),
+];
+
