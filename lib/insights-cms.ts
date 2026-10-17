@@ -22,7 +22,10 @@ export {
   type InsightsCmsData,
 };
 
+import os from "os";
+
 const DATA_FILE_PATH = path.join(process.cwd(), "data", "insights-cms.json");
+const TMP_FILE_PATH = path.join(os.tmpdir(), "goldapples-insights-cms.json");
 
 export const ADMIN_COOKIE_NAME = "goldapples_admin_session";
 export const ADMIN_SESSION_TOKEN = "ga_session_authenticated_v1";
@@ -31,7 +34,13 @@ export const ADMIN_PASSWORD = "goldapples_admin";
 
 export function getCmsData(): InsightsCmsData {
   try {
-    if (!fs.existsSync(DATA_FILE_PATH)) {
+    // If running on a read-only preview environment (like Vercel) where a /tmp override was saved, read that first
+    const activePath =
+      fs.existsSync(TMP_FILE_PATH) && process.env.VERCEL
+        ? TMP_FILE_PATH
+        : DATA_FILE_PATH;
+
+    if (!fs.existsSync(activePath)) {
       return {
         settings: { showArticlesSection: true },
         papers: [],
@@ -39,7 +48,7 @@ export function getCmsData(): InsightsCmsData {
         media: [],
       };
     }
-    const raw = fs.readFileSync(DATA_FILE_PATH, "utf-8");
+    const raw = fs.readFileSync(activePath, "utf-8");
     const parsed = JSON.parse(raw) as Partial<InsightsCmsData>;
     return {
       settings: {
@@ -63,11 +72,17 @@ export function getCmsData(): InsightsCmsData {
 }
 
 export function saveCmsData(data: InsightsCmsData): void {
-  const dir = path.dirname(DATA_FILE_PATH);
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
+  const serialized = JSON.stringify(data, null, 2);
+  try {
+    const dir = path.dirname(DATA_FILE_PATH);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(DATA_FILE_PATH, serialized, "utf-8");
+  } catch {
+    // Fallback for read-only serverless preview environments (e.g., Vercel)
+    fs.writeFileSync(TMP_FILE_PATH, serialized, "utf-8");
   }
-  fs.writeFileSync(DATA_FILE_PATH, JSON.stringify(data, null, 2), "utf-8");
 }
 
 export function getPublishedPapers(): ResearchPaper[] {
