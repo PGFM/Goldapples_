@@ -2,13 +2,18 @@
 
 import { useState } from "react";
 import { Reveal } from "@/components/ui/Reveal";
-import { categories, articles } from "@/content/insights";
+import {
+  categories,
+  articles,
+  type InsightCategory,
+  type InsightArticle,
+} from "@/content/insights";
 
 export function InsightsGrid() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const filtered = activeCategory
-    ? articles.filter((a) => a.category === activeCategory)
+    ? articles.filter((a: InsightArticle) => a.category === activeCategory)
     : articles;
 
   return (
@@ -29,7 +34,7 @@ export function InsightsGrid() {
         >
           All
         </button>
-        {categories.map((cat) => (
+        {categories.map((cat: InsightCategory) => (
           <button
             key={cat.id}
             type="button"
@@ -47,8 +52,10 @@ export function InsightsGrid() {
       </div>
 
       <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((article, i) => {
-          const category = categories.find((c) => c.id === article.category);
+        {filtered.map((article: InsightArticle, i: number) => {
+          const category = categories.find(
+            (c: InsightCategory) => c.id === article.category,
+          );
           return (
             <Reveal
               key={article.title}
