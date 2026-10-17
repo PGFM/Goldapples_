@@ -1,8 +1,12 @@
 export const academyIntro = {
   eyebrow: "Academy",
   heading: "Goldapples Communication Academy",
-  lead: "Practical communication learning for leaders, professionals and institutions.",
-  body: "The Goldapples Communication Academy builds communication capability through masterclasses, labs, workshops, coaching and simulation-based learning — for people whose work depends on clarity, credibility, influence and public trust.",
+  lead: "Better communication isn't just taught. It's practised.",
+  paragraphs: [
+    "A leader can deliver a polished presentation and still leave a team confused. A difficult conversation can be avoided until it becomes a bigger problem.",
+    "Our Academy gives leaders and professionals room to examine their communication habits, practise new approaches and apply what they learn at work.",
+  ],
+  body: "A leader can deliver a polished presentation and still leave a team confused. A difficult conversation can be avoided until it becomes a bigger problem. Our Academy gives leaders and professionals room to examine their communication habits, practise new approaches and apply what they learn at work.",
 };
 
 export const programmeCategories = [
@@ -10,108 +14,55 @@ export const programmeCategories = [
     id: "executive-communication-masterclass",
     title: "Executive Communication Masterclass",
     image: "/assets/Academy_images/Executive Communication Masterclass.jpg",
-    audience: "For senior professionals, executives and public-facing leaders.",
-    body: "Learn to communicate ideas, decisions and strategy with clarity, structure and credibility.",
-    themes: [
-      "Message clarity",
-      "Executive presence",
-      "Strategic listening",
-      "High-stakes speaking",
-      "Stakeholder communication",
-      "Credibility under pressure"
-    ],
+    audience: "For executives and senior professionals.",
+    body: "Strengthen how you present decisions, listen, manage difficult conversations, and communicate credibly under pressure.",
+    themes: [] as string[],
   },
   {
     id: "leadership-communication-lab",
     title: "Leadership Communication Lab",
     image: "/assets/Academy_images/Leadership Communication Lab.jpg",
-    audience:
-      "A practical lab for leaders who need to align teams and improve execution, using scenarios, simulations, role-play and peer feedback.",
-    body: "",
-    themes: [
-      "Aligning intention and interpretation",
-      "Communicating change",
-      "Managing meaning drift",
-      "Difficult conversations",
-      "Trust-building language"
-    ],
-  },
-  {
-    id: "communicating-credibility",
-    title: "Communicating Credibility",
-    image: "/assets/Academy_images/Communicating Credibility.jpg",
-    audience:
-      "For professionals and leaders whose work requires trust — how credibility is built or damaged through language, tone, timing and consistency.",
-    body: "",
-    themes: [
-      "Trust signals",
-      "Professional presence",
-      "Managing perception",
-      "Credibility in meetings and public engagements"
-    ],
+    audience: "For leaders responsible for people and performance.",
+    body: "Work through realistic scenarios involving change, conflicting interpretations, trust, difficult conversations and team alignment.",
+    themes: [] as string[],
   },
   {
     id: "communication-for-public-institutions",
     title: "Communication for Public Institutions",
     image: "/assets/Academy_images/Communication for Public Institutions.jpg",
-    audience:
-      "For government officials and institutional communication teams — how to communicate policies, reforms and priorities so citizens and stakeholders understand and trust them.",
-    body: "",
-    themes: [
-      "Policy translation",
-      "Citizen engagement",
-      "Media management",
-      "Communicating reform"
-    ],
+    audience: "For public-sector leaders and communication teams.",
+    body: "Improve how complex policies, reforms and public decisions are explained, discussed and communicated to stakeholders.",
+    themes: [] as string[],
   },
   {
-    id: "development-communication-training",
-    title: "Development Communication Training",
+    id: "development-communication-and-media-engagement",
+    title: "Development Communication and Media Engagement",
     image: "/assets/Academy_images/Development Communication Training.jpg",
-    audience:
-      "For journalists, development actors and civil society organisations working on public-interest issues.",
-    body: "",
-    themes: [
-      "Human-centred storytelling",
-      "Solutions-oriented reporting",
-      "Responsible media engagement",
-      "Climate and social impact communication"
-    ],
+    audience: "For development actors, journalists and communication teams.",
+    body: "Develop clearer public-interest narratives, more purposeful media engagement and storytelling grounded in people's realities.",
+    themes: [] as string[],
   },
 ];
 
 export const deliveryFormats = {
-  eyebrow: "Delivery Formats",
+  eyebrow: "Designed Around Your Reality",
+  body: "Masterclasses, practical workshops, simulations, coaching and customised organisational programmes. We adapt the learning to your people, challenges and context.",
   items: [
-    "Half-day sessions",
-    "One-day masterclasses",
-    "Two-day workshops",
-    "Executive retreats",
-    "Virtual sessions",
-    "In-house organisational training",
-    "Coaching cohorts",
-    "Simulation labs",
-    "Bespoke capacity-building programmes",
+    "Masterclasses",
+    "Practical workshops",
+    "Simulations",
+    "Coaching",
+    "Customised organisational programmes",
   ],
 };
 
 export const weService = {
   eyebrow: "We Service",
-  items: [
-    "Executives",
-    "Managers",
-    "Public officials",
-    "Project leads",
-    "Communication teams",
-    "Media professionals",
-    "Civil society actors",
-    "Development programme teams",
-    "Educators",
-    "Professionals preparing for public-facing roles",
-  ],
+  items: [] as string[],
 };
 
 export const academyCta = {
-  heading: "Would you like a tailored programme for your organisation?",
+  heading:
+    "The goal isn't simply a memorable session. It's more thoughtful communication when people return to work.",
   cta: { label: "Request a Programme Brief", href: "/contact" },
 };

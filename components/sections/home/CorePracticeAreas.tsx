@@ -7,7 +7,6 @@ import {
   IconAdvisory,
   IconAcademy,
   IconDevelopment,
-  IconMedia,
 } from "@/components/icons";
 import { corePracticeAreas } from "@/content/home";
 
@@ -39,21 +38,9 @@ const cards = [
   {
     icon: IconDevelopment,
     src: "/Development Communication Practice.jpg",
-    iconTone: "ink" as const,
+    iconTone: "gold" as const,
     tone: "ink" as const,
     imgAlt: "Development communication programme delivery",
-    cardBg: "bg-white border border-graphite/10",
-    textColor: "text-ink",
-    mutedColor: "text-steel",
-    linkColor: "text-ink border-ink/25 hover:border-ink",
-    hoverBorder: "hover:border-gold-deep/40 hover:shadow-lg hover:shadow-gold-deep/5",
-  },
-  {
-    icon: IconMedia,
-    src: "/Media and Narrative Strategy.jpg",
-    iconTone: "gold" as const,
-    tone: "ink-gold" as const,
-    imgAlt: "Media strategy and narrative session",
     cardBg: "bg-graphite",
     textColor: "text-white",
     mutedColor: "text-champagne/70",
@@ -71,16 +58,16 @@ export function CorePracticeAreas() {
             Our Core Practice Areas
           </p>
           <h2 className="text-ink font-serif text-3xl leading-tight lg:text-[2.5rem]">
-            Four practices. One purpose.
+            Three practices. One purpose.
           </h2>
         </Reveal>
 
-        {/* 2×2 equal grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* 3-column equal grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {corePracticeAreas.map((area, i) => {
-            const card = cards[i];
+            const card = cards[i % cards.length];
             return (
-              <Reveal key={area.title} delay={i * 0.08}>
+              <Reveal key={area.title} delay={i * 0.08} className="h-full">
                 <div 
                   className={`
                     ${card.cardBg} ${card.hoverBorder} 
@@ -89,7 +76,7 @@ export function CorePracticeAreas() {
                   `}
                 >
                   {/* Image area */}
-                  <div className="relative h-56 lg:h-64 overflow-hidden">
+                  <div className="relative h-56 lg:h-60 overflow-hidden">
                     <DuotonePhoto
                       src={card.src}
                       alt={card.imgAlt}

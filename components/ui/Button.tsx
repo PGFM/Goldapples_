@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "gold";
+type Variant = "primary" | "secondary" | "secondaryOnDark" | "gold";
 
 const base =
   "inline-flex items-center justify-center gap-2 rounded-[3px] text-sm font-semibold tracking-wide transition-colors duration-150 ease-out min-h-11 px-6";
@@ -10,6 +10,8 @@ const variants: Record<Variant, string> = {
   primary: "bg-graphite text-white hover:bg-ink",
   secondary:
     "px-0 min-h-11 bg-transparent text-ink border-b border-ink/40 hover:border-ink rounded-none",
+  secondaryOnDark:
+    "border border-champagne/45 bg-white/5 text-champagne hover:border-gold hover:bg-white/10 hover:text-white",
   gold: "bg-linear-to-br from-gold-deep to-gold text-ink hover:brightness-95",
 };
 

@@ -1,15 +1,12 @@
 import { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { academyIntro, programmeCategories, deliveryFormats, weService, academyCta } from "@/content/academy";
+import { academyIntro, programmeCategories, deliveryFormats, academyCta } from "@/content/academy";
 import { Button } from "@/components/ui/Button";
 import { SignalDivider } from "@/components/ui/SignalDivider";
 import { DuotonePhoto } from "@/components/ui/DuotonePhoto";
 import { 
-  Clock, CalendarDays, CalendarRange, Map, Laptop, 
-  Building2, Users, TestTube, Sparkles, User, 
-  Users2, Landmark, Briefcase, Radio, 
-  Globe2, Leaf, GraduationCap, Mic 
+  GraduationCap, Users, TestTube, Sparkles, Building2
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -18,38 +15,18 @@ export const metadata: Metadata = {
     "Practical executive communication training, leadership communication labs, workshops and masterclasses for professionals, teams and institutions.",
 };
 
-// Helper for mapping strings to line icons
+// Helper for mapping format strings to line icons
 const getFormatIcon = (format: string) => {
   const f = format.toLowerCase();
-  if (f.includes('half-day')) return Clock;
-  if (f.includes('one-day')) return CalendarDays;
-  if (f.includes('two-day')) return CalendarRange;
-  if (f.includes('retreat')) return Map;
-  if (f.includes('virtual')) return Laptop;
-  if (f.includes('in-house')) return Building2;
-  if (f.includes('cohort')) return Users;
-  if (f.includes('simulation')) return TestTube;
-  return Sparkles; 
-};
-
-const getAudienceIcon = (audience: string) => {
-  const a = audience.toLowerCase();
-  if (a.includes('executives')) return User;
-  if (a.includes('managers')) return Briefcase;
-  if (a.includes('officials')) return Landmark;
-  if (a.includes('project leads')) return Briefcase;
-  if (a.includes('communication teams')) return Users2;
-  if (a.includes('media professionals')) return Radio;
-  if (a.includes('civil society')) return Globe2;
-  if (a.includes('development')) return Leaf;
-  if (a.includes('educators')) return GraduationCap;
-  if (a.includes('public-facing')) return Mic;
-  return Users; 
+  if (f.includes("masterclass")) return GraduationCap;
+  if (f.includes("workshop")) return Users;
+  if (f.includes("simulation")) return TestTube;
+  if (f.includes("coaching")) return Sparkles;
+  if (f.includes("customised") || f.includes("organisational")) return Building2;
+  return Sparkles;
 };
 
 export default function AcademyPage() {
-  
-
   return (
     <>
       {/* Type-Led Editorial Hero */}
@@ -62,7 +39,7 @@ export default function AcademyPage() {
             <h1 className="text-white font-serif text-4xl leading-[1.1] md:text-5xl lg:text-6xl max-w-[20ch] lg:mx-auto">
               {academyIntro.heading}
             </h1>
-            <h2 className="text-champagne/90 font-serif mt-6 max-w-[32ch] text-xl md:text-2xl leading-snug lg:mx-auto">
+            <h2 className="text-gold font-serif mt-6 max-w-[32ch] text-xl md:text-2xl leading-snug lg:mx-auto">
               {academyIntro.lead}
             </h2>
           </Reveal>
@@ -72,8 +49,11 @@ export default function AcademyPage() {
             <SignalDivider tone="gold" className="w-full !max-w-none [&_svg]:!max-w-none [&_svg]:w-full" />
           </Reveal>
 
-          {/* Programme Index */}
+          {/* Flagship Programmes Index */}
           <Reveal delay={0.2}>
+            <p className="font-mono text-[11px] font-semibold tracking-[0.2em] uppercase text-gold-deep mb-6">
+              Flagship Programmes
+            </p>
             <div className="flex flex-wrap lg:justify-center gap-x-12 gap-y-6 lg:gap-x-16">
               {programmeCategories.map((prog, i) => (
                 <a 
@@ -97,15 +77,19 @@ export default function AcademyPage() {
       {/* Intro Band */}
       <section className="bg-champagne py-16 lg:py-24 border-b border-graphite/10 relative z-40">
         <Container className="lg:flex lg:justify-center">
-          <Reveal>
-            <p className="text-graphite text-[17px] md:text-lg leading-relaxed max-w-[55ch] lg:text-justify lg:mx-auto">
-              {academyIntro.body}
-            </p>
-          </Reveal>
+          <div className="max-w-[58ch] lg:mx-auto space-y-5">
+            {academyIntro.paragraphs.map((p, i) => (
+              <Reveal key={i} delay={i * 0.1}>
+                <p className="text-graphite text-[17px] md:text-lg leading-relaxed lg:text-justify">
+                  {p}
+                </p>
+              </Reveal>
+            ))}
+          </div>
         </Container>
       </section>
 
-      {/* Programmes Stacked Sections */}
+      {/* Flagship Programmes Stacked Sections */}
       <div className="relative overflow-hidden">
         {programmeCategories.map((prog, i) => {
           const isInk = i % 2 !== 0;
@@ -168,40 +152,18 @@ export default function AcademyPage() {
                               {prog.body}
                             </p>
                           )}
-
-                          {prog.themes && Array.isArray(prog.themes) && prog.themes.length > 0 && (
-                            <div className="mt-8">
-                              <p className={`text-xs font-bold tracking-[0.1em] uppercase mb-4 ${isInk ? "text-white/40" : "text-graphite/50"}`}>
-                                Key Themes
-                              </p>
-                              <div className="flex flex-wrap gap-2">
-                                {prog.themes.map((theme) => (
-                                  <span
-                                    key={theme}
-                                    className={`inline-flex items-center px-3 py-1.5 rounded-[4px] border text-[13.5px] font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md cursor-default ${
-                                      isInk 
-                                        ? "border-white/10 bg-white/5 text-champagne/90" 
-                                        : "border-graphite/20 bg-white text-ink/80"
-                                    }`}
-                                  >
-                                    {theme}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-                          )}
                         </Reveal>
                       </div>
 
                       {/* Image Column */}
                       <div className={`w-full ${isImageRight ? "lg:order-2" : "lg:order-1"}`}>
                         <Reveal delay={0.1}>
-                           <DuotonePhoto 
-                             src={prog.image || ""} 
-                             alt={prog.title} 
-                             tone={isInk ? "gold" : "ink-gold"}
-                             className="w-full aspect-[4/3] rounded-sm"
-                           />
+                          <DuotonePhoto 
+                            src={prog.image || ""} 
+                            alt={prog.title} 
+                            tone={isInk ? "gold" : "ink-gold"}
+                            className="w-full aspect-[4/3] rounded-sm"
+                          />
                         </Reveal>
                       </div>
 
@@ -214,76 +176,49 @@ export default function AcademyPage() {
         })}
       </div>
 
-      {/* Delivery Formats & Audience (Structured Panels) */}
+      {/* Designed Around Your Reality (Structured Panel) */}
       <section className="bg-champagne py-24 lg:py-32">
-        <Container className="grid gap-8 lg:grid-cols-2">
-          
+        <Container>
           <Reveal>
-            <div className="bg-white border border-graphite/10 rounded-xl p-8 md:p-12 h-full flex flex-col shadow-sm">
-              <div className="mb-12">
-                <p className="font-mono text-xs font-bold tracking-[0.15em] uppercase text-gold-700 mb-4">
-                  Logistics
-                </p>
-                <div className="w-12 h-px bg-gold-deep mb-6" />
-                <h2 className="text-ink font-serif text-[2rem]">
-                  {deliveryFormats.eyebrow}
-                </h2>
-              </div>
-              
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 mt-auto">
-                {deliveryFormats.items.map((format) => {
-                  const Icon = getFormatIcon(format);
-                  return (
-                    <div
-                      key={format}
-                      className="flex items-center gap-4 bg-white border border-graphite/15 rounded-md p-4 transition-colors hover:border-gold-deep group"
-                    >
-                      <div className="shrink-0 text-gold-700 group-hover:text-gold-deep transition-colors">
-                        <Icon strokeWidth={1.5} size={20} />
+            <div className="bg-white border border-graphite/10 rounded-xl p-8 md:p-14 shadow-sm">
+              <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                <div className="lg:col-span-5">
+                  <p className="font-mono text-xs font-bold tracking-[0.15em] uppercase text-gold-700 mb-4">
+                    Tailored Learning
+                  </p>
+                  <div className="w-12 h-px bg-gold-deep mb-6" />
+                  <h2 className="text-ink font-serif text-[2rem] lg:text-[2.25rem] leading-tight mb-5">
+                    {deliveryFormats.eyebrow}
+                  </h2>
+                  <p className="text-graphite text-[17px] leading-relaxed">
+                    {deliveryFormats.body}
+                  </p>
+                </div>
+
+                <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {deliveryFormats.items.map((format, idx) => {
+                    const Icon = getFormatIcon(format);
+                    const isLastOdd = idx === deliveryFormats.items.length - 1 && deliveryFormats.items.length % 2 !== 0;
+                    return (
+                      <div
+                        key={format}
+                        className={`flex items-center gap-4 bg-white border border-graphite/15 rounded-md p-4 transition-colors hover:border-gold-deep group ${
+                          isLastOdd ? "sm:col-span-2" : ""
+                        }`}
+                      >
+                        <div className="shrink-0 text-gold-700 group-hover:text-gold-deep transition-colors">
+                          <Icon strokeWidth={1.5} size={20} />
+                        </div>
+                        <span className="text-[14.5px] text-ink font-medium text-left leading-snug">
+                          {format}
+                        </span>
                       </div>
-                      <span className="text-[14.5px] text-ink font-medium text-left leading-snug">
-                        {format}
-                      </span>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="bg-white border border-graphite/10 rounded-xl p-8 md:p-12 h-full flex flex-col shadow-sm">
-              <div className="mb-12">
-                <p className="font-mono text-xs font-bold tracking-[0.15em] uppercase text-gold-700 mb-4">
-                  Target Profiles
-                </p>
-                <div className="w-12 h-px bg-gold-deep mb-6" />
-                <h2 className="text-ink font-serif text-[2rem]">
-                  {weService.eyebrow}
-                </h2>
-              </div>
-              
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 mt-auto">
-                {weService.items.map((audience) => {
-                  const Icon = getAudienceIcon(audience);
-                  return (
-                    <div
-                      key={audience}
-                      className="flex items-center gap-4 bg-white border border-graphite/15 rounded-md p-4 transition-colors hover:border-gold-deep group"
-                    >
-                      <div className="shrink-0 text-gold-700 group-hover:text-gold-deep transition-colors">
-                        <Icon strokeWidth={1.5} size={20} />
-                      </div>
-                      <span className="text-[14.5px] text-ink font-medium text-left leading-snug">
-                        {audience}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </Reveal>
-
         </Container>
       </section>
 
@@ -295,7 +230,7 @@ export default function AcademyPage() {
           <Reveal className="w-full">
             <SignalDivider tone="gold" className="mb-16" />
             
-            <h2 className="font-serif text-[2rem] leading-[1.12] text-white lg:text-[2.5rem] mb-12 max-w-[20ch] mx-auto">
+            <h2 className="font-serif text-[2rem] leading-[1.15] text-white lg:text-[2.5rem] mb-12 max-w-[26ch] mx-auto">
               {academyCta.heading}
             </h2>
             

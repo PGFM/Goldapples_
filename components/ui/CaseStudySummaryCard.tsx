@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Modal } from "@/components/ui/Modal";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
-
 import Image from "next/image";
 
 type CaseStudy = {
@@ -12,17 +11,11 @@ type CaseStudy = {
   sector: string;
   image: string;
   challenge: string;
+  workLabel?: string;
   approach: string;
-  whatChanged: string;
+  whatChanged?: string;
   keyInsight: string;
 };
-
-const detailParts: { key: keyof CaseStudy; label: string }[] = [
-  { key: "challenge", label: "Challenge" },
-  { key: "approach", label: "Goldapples Approach" },
-  { key: "whatChanged", label: "What Changed" },
-  { key: "keyInsight", label: "Key Insight" },
-];
 
 export function CaseStudySummaryCard({
   study,
@@ -36,6 +29,15 @@ export function CaseStudySummaryCard({
   const [open, setOpen] = useState(false);
   const modalId = `case-study-modal-${index}`;
   const titleId = `case-study-title-${index}`;
+
+  const detailParts = [
+    { key: "challenge" as const, label: "The Communication Need", value: study.challenge },
+    { key: "approach" as const, label: study.workLabel || "The Work", value: study.approach },
+    ...(study.whatChanged
+      ? [{ key: "whatChanged" as const, label: "What Changed", value: study.whatChanged }]
+      : []),
+    { key: "keyInsight" as const, label: "Why It Matters", value: study.keyInsight },
+  ];
 
   return (
     <>
@@ -56,13 +58,15 @@ export function CaseStudySummaryCard({
 
         {/* Card Body */}
         <div className="flex flex-1 flex-col justify-between gap-6 p-6">
-          {/* Key Insight */}
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-gold-deep">
-              Key Insight
+              {study.sector}
             </span>
-            <p className="font-serif text-lg italic leading-relaxed text-ink">
-              &ldquo;{study.keyInsight}&rdquo;
+            <h3 className="font-serif text-xl leading-snug text-ink">
+              {study.title}
+            </h3>
+            <p className="text-[15px] leading-relaxed text-graphite">
+              {study.keyInsight}
             </p>
           </div>
 
@@ -101,7 +105,7 @@ export function CaseStudySummaryCard({
               className={`rounded-[2px] p-5 ${
                 part.key === "keyInsight"
                   ? "bg-champagne sm:col-span-2"
-                  : "bg-champagne/30"
+                  : "bg-champagne/30 sm:col-span-2"
               }`}
             >
               <span className="border-l-2 border-gold-deep pl-2 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-graphite">
@@ -114,7 +118,7 @@ export function CaseStudySummaryCard({
                     : "text-graphite"
                 }`}
               >
-                {study[part.key]}
+                {part.value}
               </p>
             </div>
           ))}

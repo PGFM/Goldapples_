@@ -51,7 +51,7 @@ export default function DevelopmentCommunicationPage() {
               <p className="font-mono text-[11px] font-bold tracking-[0.2em] uppercase text-gold-deep mb-6">
                 {devCommIntro.eyebrow}
               </p>
-              <h1 className="mt-2 font-serif text-5xl leading-[1.1] text-white lg:text-6xl tracking-tight">
+              <h1 className="mt-2 font-serif text-3xl sm:text-4xl md:text-5xl leading-[1.1] text-white lg:text-6xl tracking-tight">
                 {devCommIntro.heading}
               </h1>
             </Reveal>
@@ -60,14 +60,17 @@ export default function DevelopmentCommunicationPage() {
                 {devCommIntro.lead}
               </p>
             </Reveal>
-            <div className="mt-8 flex flex-col gap-6">
-              <Reveal
-                as="p"
-                delay={0.2}
-                className="text-white/60 text-[15px] leading-[1.7] max-w-[65ch] font-sans lg:text-justify lg:mx-auto"
-              >
-                {devCommIntro.body}
-              </Reveal>
+            <div className="mt-8 flex flex-col gap-5">
+              {devCommIntro.paragraphs.map((p, i) => (
+                <Reveal
+                  key={i}
+                  as="p"
+                  delay={0.2 + i * 0.08}
+                  className="text-white/60 text-[15px] leading-[1.7] max-w-[65ch] font-sans lg:text-justify lg:mx-auto"
+                >
+                  {p}
+                </Reveal>
+              ))}
             </div>
           </div>
         </Container>

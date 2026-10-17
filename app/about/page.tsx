@@ -10,8 +10,6 @@ import Image from "next/image";
 import {
   IconDiagnose,
   IconMeaning,
-  IconAlignment,
-  IconMedia,
   IconFramework,
 } from "@/components/icons";
 
@@ -20,6 +18,7 @@ import {
   ourEvolution,
   ourPhilosophy,
   whatMakesUsDifferent,
+  founder,
   aspiration,
 } from "@/content/about";
 
@@ -32,8 +31,6 @@ export const metadata: Metadata = {
 const differentiatorIcons = [
   IconDiagnose,
   IconMeaning,
-  IconAlignment,
-  IconMedia,
   IconFramework,
 ];
 
@@ -48,13 +45,13 @@ export default function AboutPage() {
               <p className="font-mono text-[11px] font-bold tracking-[0.2em] uppercase text-gold-deep mb-6">
                 {aboutIntro.eyebrow}
               </p>
-              <h1 className="mt-2 font-serif text-5xl leading-[1.1] text-white lg:text-6xl tracking-tight">
+              <h1 className="mt-2 font-serif text-3xl sm:text-4xl md:text-5xl leading-[1.1] text-white lg:text-6xl tracking-tight">
                 About Goldapples<br className="hidden lg:block" /> Media Associates
               </h1>
             </Reveal>
 
             <Reveal delay={0.1}>
-              <p className="mt-8 mb-8 font-serif text-gold text-xl lg:text-2xl tracking-wide">
+              <p className="mt-8 mb-8 font-serif text-gold text-xl lg:text-2xl tracking-wide leading-snug">
                 {aboutIntro.lead}
               </p>
             </Reveal>
@@ -73,7 +70,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <Reveal delay={0.3} className="relative w-full h-[400px] lg:h-[500px] rounded-sm overflow-hidden">
+          <Reveal delay={0.3} className="relative w-full h-[280px] sm:h-[380px] lg:h-[500px] rounded-sm overflow-hidden">
             <Image 
               src="/assets/photography/journalists-session.jpg" 
               alt="Journalists session" 
@@ -112,7 +109,7 @@ export default function AboutPage() {
               </Reveal>
               
               {ourEvolution.paragraphs.slice(1).map((p, i) => (
-                <Reveal key={i} as="p" delay={0.3 + (i * 0.1)} className="text-graphite text-[19px] leading-relaxed">
+                <Reveal key={i} as="p" delay={0.3 + (i * 0.1)} className="font-serif italic text-ink text-[21px] leading-relaxed pt-2">
                   {p}
                 </Reveal>
               ))}
@@ -124,7 +121,7 @@ export default function AboutPage() {
       {/* 3. Philosophy (Dark layout) */}
       <section className="bg-ink py-24 lg:py-32">
         <Container className="grid gap-12 lg:grid-cols-12 items-start">
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-5">
             <Reveal>
               <Eyebrow tone="champagne">{ourPhilosophy.eyebrow}</Eyebrow>
               <h2 className="text-white mt-4 max-w-[20ch] font-serif text-3xl leading-tight lg:text-[2.5rem]">
@@ -132,22 +129,40 @@ export default function AboutPage() {
               </h2>
             </Reveal>
           </div>
-          <div className="lg:col-span-6 lg:col-start-7 pt-2 lg:pt-16">
-            <Reveal delay={0.2}>
-              <p className="text-white/70 text-[17px] leading-relaxed max-w-[50ch]">
+          <div className="lg:col-span-6 lg:col-start-7 pt-2 lg:pt-10 space-y-8">
+            <Reveal delay={0.15}>
+              <p className="text-white/75 text-[17px] leading-relaxed max-w-[52ch]">
                 {ourPhilosophy.body}
+              </p>
+            </Reveal>
+
+            <div className="space-y-4 border-l border-gold-deep/40 pl-6">
+              {ourPhilosophy.pillars.map((pillar, i) => (
+                <Reveal key={pillar.label} delay={0.2 + i * 0.08}>
+                  <p className="text-[16px] leading-relaxed text-white/70">
+                    <span className="font-serif text-gold font-medium mr-2">
+                      {pillar.label}:
+                    </span>
+                    {pillar.description}
+                  </p>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal delay={0.45}>
+              <p className="font-serif italic text-champagne/90 text-[18px] leading-relaxed max-w-[50ch]">
+                {ourPhilosophy.closing}
               </p>
             </Reveal>
           </div>
         </Container>
       </section>
 
-      {/* 5. What Makes Us Different (Grid of colored boxes) */}
+      {/* 4. What Makes Us Different (Grid of 3 colored boxes) */}
       <section className="bg-white py-24 lg:py-32">
         <Container>
           <Reveal>
             <Eyebrow>{whatMakesUsDifferent.eyebrow}</Eyebrow>
-
           </Reveal>
           
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -171,12 +186,6 @@ export default function AboutPage() {
                   heading: "text-ink",
                   paragraph: "text-ink/70",
                 },
-                {
-                  wrapper: "bg-white text-ink border border-ink/10",
-                  icon: "text-gold-deep",
-                  heading: "text-ink",
-                  paragraph: "text-ink/60",
-                }
               ];
               const style = styles[i % styles.length];
               const Icon = differentiatorIcons[i % differentiatorIcons.length];
@@ -201,8 +210,39 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* 7. Aspiration (Dark layout with SignalDivider via ClosingCta) */}
-      <ClosingCta heading={aspiration.body} />
+      {/* 5. Founder */}
+      <section className="bg-champagne/40 py-20 lg:py-28">
+        <Container>
+          <div className="grid lg:grid-cols-2 lg:items-stretch overflow-hidden rounded-sm">
+            <Reveal className="relative min-h-[320px] sm:min-h-[420px] lg:min-h-full">
+              <Image 
+                src={founder.photo.src}
+                alt={founder.photo.alt}
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </Reveal>
+            <Reveal delay={0.1} className="bg-ink p-6 sm:p-10 lg:p-16 flex flex-col justify-center">
+              <Eyebrow tone="champagne" className="mb-6">{founder.eyebrow}</Eyebrow>
+              <h2 className="text-white font-serif text-3xl sm:text-4xl mb-2">{founder.name}</h2>
+              <p className="text-gold uppercase tracking-widest text-xs font-bold mb-8">
+                {founder.title}
+              </p>
+              <div className="space-y-5">
+                {founder.paragraphs.map((p, i) => (
+                  <p key={i} className="text-white/75 text-[16px] leading-relaxed max-w-[52ch]">
+                    {p}
+                  </p>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </Container>
+      </section>
+
+      {/* 6. Aspiration (Dark layout with SignalDivider via ClosingCta) */}
+      <ClosingCta eyebrow={aspiration.eyebrow} heading={aspiration.body} />
     </>
   );
 }

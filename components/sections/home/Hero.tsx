@@ -69,7 +69,7 @@ export function Hero() {
           
           {/* Left — Content */}
           <div className="lg:col-span-7 flex flex-col relative">
-            {/* Epigraph */}
+            {/* Lead / Epigraph */}
             <motion.div
               className="mb-8"
               custom={0}
@@ -79,36 +79,35 @@ export function Hero() {
             >
               <div className="flex flex-col gap-3">
                 <p className="font-serif text-[22px] leading-snug italic text-champagne/90">
-                  &ldquo;{hero.quote}&rdquo;
+                  {hero.lead}
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="h-px w-8 bg-gold-deep/60" />
-                  <cite className="font-mono text-[10px] font-bold tracking-[0.25em] uppercase text-gold-deep not-italic">
-                    {hero.quoteAuthor}
-                  </cite>
+                  <div className="h-px w-12 bg-gold-deep/60" />
                 </div>
               </div>
             </motion.div>
 
             {/* Main headline - Refined typographic treatment */}
             <motion.h1
-              className="font-serif text-[2.5rem] leading-[1.12] tracking-tight text-white md:text-5xl lg:text-[56px] mb-6 max-w-[20ch]"
+              className="font-serif text-[2.5rem] leading-[1.12] tracking-tight text-white md:text-5xl lg:text-[56px] mb-6 max-w-[18ch]"
               custom={1}
               variants={reducedMotion ? undefined : fadeUp}
               initial={reducedMotion ? undefined : "hidden"}
               animate={reducedMotion ? undefined : "visible"}
             >
-              Communication determines <span className="relative inline-block italic text-gold-deep pr-1">
-                organisational
+              Communication{" "}
+              <span className="relative inline-block italic text-gold-deep pr-1">
+                shapes
                 <svg className="absolute -bottom-1 left-0 w-full h-[3px] text-gold-deep/40" viewBox="0 0 100 10" preserveAspectRatio="none">
                   <path d="M0 5 Q 50 0 100 5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                 </svg>
-              </span> performance. We help leaders, institutions and development actors make it work.
+              </span>{" "}
+              what happens next.
             </motion.h1>
 
             {/* Supporting body */}
             <motion.p
-              className="hidden lg:block max-w-[55ch] text-lg leading-relaxed text-champagne/80 mb-10"
+              className="block max-w-[55ch] text-base sm:text-lg leading-relaxed text-champagne/80 mb-8 lg:mb-10"
               custom={2}
               variants={reducedMotion ? undefined : fadeUp}
               initial={reducedMotion ? undefined : "hidden"}

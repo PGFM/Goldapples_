@@ -1,7 +1,7 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { Container } from "@/components/ui/Container";
 import { DuotonePhoto } from "@/components/ui/DuotonePhoto";
-import { whyGoldapples } from "@/content/home";
+import { familiarChallenges } from "@/content/home";
 
 function ConceptIcon({ index }: { index: number }) {
   const icons = [
@@ -12,7 +12,7 @@ function ConceptIcon({ index }: { index: number }) {
   ];
 
   return (
-    <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7 text-gold-deep mb-5">
+    <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7 text-gold-deep mb-5 shrink-0">
       {icons[index % icons.length]}
     </svg>
   );
@@ -27,29 +27,31 @@ export function WhyGoldapples() {
           <div className="lg:col-span-10">
             <Reveal>
               <p className="font-mono text-[11px] font-semibold tracking-[0.25em] uppercase text-gold-deep mb-6">
-                Why Goldapples
+                {familiarChallenges.eyebrow}
               </p>
-              <h2 className="font-serif text-[2rem] leading-[1.12] text-ink lg:text-[2.5rem] mb-6 max-w-[20ch]">
-                {whyGoldapples.heading}
+              <h2 className="font-serif text-[2rem] leading-[1.12] text-ink lg:text-[2.5rem] max-w-[24ch]">
+                {familiarChallenges.heading}
               </h2>
-              <p className="text-graphite text-[17px] leading-relaxed max-w-[45ch]">
-                {whyGoldapples.body}
-              </p>
             </Reveal>
           </div>
         </div>
 
-        {/* Bottom — Mixed Grid of points and image */}
+        {/* Bottom — Mixed Grid of 4 challenge cards and tall image */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           
-          {/* Points 1 & 2 */}
-          {whyGoldapples.points.slice(0, 2).map((point, i) => (
-            <Reveal key={point} delay={i * 0.1} className="h-full">
-              <div className="bg-champagne/40 border border-graphite/5 rounded-[3px] p-8 h-full flex flex-col justify-center min-h-[240px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-sm">
-                <ConceptIcon index={i} />
-                <p className="font-serif text-[19px] leading-snug text-ink">
-                  {point}
-                </p>
+          {/* Cards 1 & 2 */}
+          {familiarChallenges.items.slice(0, 2).map((item, i) => (
+            <Reveal key={item.title} delay={i * 0.1} className="h-full">
+              <div className="bg-champagne/40 border border-graphite/5 rounded-[3px] p-8 h-full flex flex-col justify-between min-h-[260px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-sm">
+                <div>
+                  <ConceptIcon index={i} />
+                  <h3 className="font-serif text-[21px] leading-snug text-ink mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-graphite text-[15px] leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
               </div>
             </Reveal>
           ))}
@@ -58,27 +60,27 @@ export function WhyGoldapples() {
           <Reveal delay={0.2} className="md:col-span-2 lg:col-span-1 lg:row-span-2 h-full">
             <div className="relative w-full h-[400px] lg:h-full min-h-[500px] rounded-[3px] overflow-hidden group">
               <DuotonePhoto
-                src="/why gold.jpg"
-                alt="Goldapples leadership — J. Ayo Makinde"
-                tone="ink"
+                src="/What_we_do.jpg"
+                alt="Goldapples advisory and leadership communication session"
+                tone="ink-gold"
                 className="absolute inset-0 w-full h-full transition-transform duration-700 ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/90 to-transparent flex items-end p-8">
-                <p className="font-serif text-[17px] leading-snug italic text-champagne/90 border-l-[3px] border-gold-deep pl-5">
-                  &ldquo;{whyGoldapples.closing}&rdquo;
-                </p>
-              </div>
             </div>
           </Reveal>
 
-          {/* Points 3 & 4 */}
-          {whyGoldapples.points.slice(2, 4).map((point, i) => (
-            <Reveal key={point} delay={0.3 + i * 0.1} className="h-full">
-              <div className="bg-graphite text-white rounded-[3px] p-8 h-full flex flex-col justify-center min-h-[240px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-md hover:shadow-ink/20">
-                <ConceptIcon index={i + 2} />
-                <p className="font-serif text-[19px] leading-snug text-champagne/90">
-                  {point}
-                </p>
+          {/* Cards 3 & 4 */}
+          {familiarChallenges.items.slice(2, 4).map((item, i) => (
+            <Reveal key={item.title} delay={0.3 + i * 0.1} className="h-full">
+              <div className="bg-graphite text-white rounded-[3px] p-8 h-full flex flex-col justify-between min-h-[260px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-md hover:shadow-ink/20">
+                <div>
+                  <ConceptIcon index={i + 2} />
+                  <h3 className="font-serif text-[21px] leading-snug text-white mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-champagne/80 text-[15px] leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
               </div>
             </Reveal>
           ))}
