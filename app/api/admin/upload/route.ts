@@ -56,14 +56,29 @@ export async function POST(req: Request) {
     const fileName = `${Date.now()}-${baseName || "upload"}${ext}`;
     const uploadsDir = path.join(process.cwd(), "public", "uploads");
 
-    if (!fs.existsSync(uploadsDir)) {
-      fs.mkdirSync(uploadsDir, { recursive: true });
+    let publicUrl = `/uploads/${fileName}`;
+    try {
+      if (!fs.existsSync(uploadsDir)) {
+        fs.mkdirSync(uploadsDir, { recursive: true });
+      }
+      const filePath = path.join(uploadsDir, fileName);
+      fs.writeFileSync(filePath, buffer);
+    } catch {
+      // Fallback for read-only preview environments (e.g., Vercel)
+      const mimeType = isPdf
+        ? "application/pdf"
+        : ext === ".svg"
+          ? "image/svg+xml"
+          : ext === ".png"
+            ? "image/png"
+            : ext === ".webp"
+              ? "image/webp"
+              : ext === ".gif"
+                ? "image/gif"
+                : "image/jpeg";
+      publicUrl = `data:${mimeType};base64,${buffer.toString("base64")}`;
     }
 
-    const filePath = path.join(uploadsDir, fileName);
-    fs.writeFileSync(filePath, buffer);
-
-    const publicUrl = `/uploads/${fileName}`;
     const mediaItem: MediaItem = {
       id: `media-${Date.now()}`,
       name: file.name,
