@@ -35,8 +35,8 @@ export function FrameworksShowcase({ frameworks }: { frameworks: Framework[] }) 
 
   return (
     <div className="grid gap-8 lg:grid-cols-12">
-      {/* Left Column: Vertical tab list */}
-      <div className="flex flex-col gap-3 lg:col-span-4">
+      {/* Left Column: Vertical tab list (2-col on tablet, stacked on desktop) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-col gap-3 lg:col-span-4">
         {frameworks.map((fw, i) => {
           const Icon = icons[i];
           const isActive = activeId === fw.id;
