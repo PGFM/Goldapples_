@@ -1,8 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { footerContent, siteMeta } from "@/content/site";
 
 export function Footer() {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
+
   return (
     <footer className="bg-ink text-champagne" data-dark-section>
       <div className="mx-auto max-w-[1280px] px-6 py-20 lg:px-10">

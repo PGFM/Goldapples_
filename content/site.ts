@@ -6,7 +6,7 @@ export const siteMeta = {
 
 export const footerContent = {
   blurb:
-    "Helping people and institutions communicate with greater understanding, responsibility and impact.",
+    "Goldapples Media Associates is a communications advisory, executive education, and development communication firm helping leaders and institutions strengthen understanding, trust, alignment, and action.",
   aboutColumn: {
     heading: { label: "About", href: "/about" },
     links: [
