@@ -64,6 +64,20 @@ export function Nav() {
         </Link>
 
         <ul className="hidden items-center gap-1 lg:flex">
+          {primaryNav.slice(0, 1).map((item) => (
+            <li key={item.label} onMouseEnter={() => setServicesOpen(false)}>
+              <Link
+                href={item.href}
+                className="group text-graphite hover:text-ink flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors"
+              >
+                {item.label}
+                <span
+                  aria-hidden="true"
+                  className="bg-gold-deep h-1 w-1 rounded-full opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+                />
+              </Link>
+            </li>
+          ))}
           <li className="relative" onMouseEnter={() => setServicesOpen(true)}>
             <button
               type="button"
@@ -80,8 +94,8 @@ export function Nav() {
               </span>
             </button>
           </li>
-          {primaryNav.map((item) => (
-            <li key={item.label}>
+          {primaryNav.slice(1).map((item) => (
+            <li key={item.label} onMouseEnter={() => setServicesOpen(false)}>
               <Link
                 href={item.href}
                 className="group text-graphite hover:text-ink flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors"
@@ -167,6 +181,17 @@ export function Nav() {
             className="border-graphite/10 overflow-hidden border-t bg-white lg:hidden"
           >
             <ul className="divide-graphite/10 flex flex-col divide-y px-6">
+              {primaryNav.slice(0, 1).map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="text-ink flex min-h-11 items-center py-3 text-base font-medium"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
               <li>
                 <button
                   type="button"
@@ -206,7 +231,7 @@ export function Nav() {
                   )}
                 </AnimatePresence>
               </li>
-              {primaryNav.map((item) => (
+              {primaryNav.slice(1).map((item) => (
                 <li key={item.label}>
                   <Link
                     href={item.href}
