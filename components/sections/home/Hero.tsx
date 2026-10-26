@@ -97,7 +97,7 @@ export function Hero() {
             >
               Communication{" "}
               <span className="relative inline-block italic text-gold-deep pr-1">
-                shapes
+                informs
                 <svg className="absolute -bottom-1 left-0 w-full h-[3px] text-gold-deep/40" viewBox="0 0 100 10" preserveAspectRatio="none">
                   <path d="M0 5 Q 50 0 100 5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                 </svg>
