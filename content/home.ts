@@ -1,6 +1,6 @@
 export const hero = {
-  lead: "A decision is made. A message goes out. What people understand shapes what happens next.",
-  heading: "Communication shapes what happens next.",
+  lead: "A decision is made. A message goes out. What people understand determines what happens next.",
+  heading: "Communication informs what happens next.",
   body: "Goldapples helps leaders, institutions and development organisations find the communication gaps behind stalled execution, weakened trust and missed opportunities, then design better ways forward.",
   primaryCta: { label: "Discuss Your Communication Challenge", href: "/contact" },
   secondaryCta: { label: "Explore Our Work", href: "/work-and-impact" },
