@@ -28,6 +28,11 @@ export const metadata: Metadata = {
   },
   description:
     "Goldapples Media Associates helps leaders, organisations and development actors improve clarity, alignment, credibility and public impact through communication advisory, training and development communication.",
+  icons: {
+    icon: "/assets/logo/goldapples-icon-512.png",
+    shortcut: "/assets/logo/goldapples-icon-512.png",
+    apple: "/assets/logo/goldapples-icon-512.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
