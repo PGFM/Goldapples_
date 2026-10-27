@@ -38,11 +38,27 @@ export const serviceCategories: ServiceCategory[] = [
   },
 ];
 
+export const mentorshipCategories: ServiceCategory[] = [
+  {
+    id: "communication-intelligence-mentorship",
+    label: "Communication Intelligence Mentorship",
+    href: "/communication-intelligence-mentorship",
+    description:
+      "A selective mentorship experience for media, communication, and emerging leadership professionals.",
+  },
+  {
+    id: "executive-communication-intelligence",
+    label: "Executive Communication Intelligence",
+    href: "/executive-communication-intelligence",
+    description:
+      "Private advisory and coaching experience for senior leaders whose communication carries consequences.",
+  },
+];
+
 export const primaryNav = [
   { label: "About", href: "/about" },
   { label: "Work and Impact", href: "/work-and-impact" },
   { label: "Insights", href: "/insights" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const bookConsultationCta = { label: "Book a Consultation", href: "/contact" };

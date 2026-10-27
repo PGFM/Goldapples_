@@ -30,6 +30,16 @@ export const seo = {
     description:
       "Explore Goldapples' original thinking on communication intelligence, meaning drift, failed meaning, leadership alignment and the Physics of Communication.",
   },
+  communicationIntelligenceMentorship: {
+    title: "Communication Intelligence Mentorship | Goldapples Media Associates",
+    description:
+      "A selective professional development experience for individuals seeking to grow beyond technical competence into stronger professional judgement, self-awareness, confidence and leadership effectiveness.",
+  },
+  executiveCommunicationIntelligence: {
+    title: "Executive Communication Intelligence (ECI) | Goldapples Media Associates",
+    description:
+      "A private advisory and coaching experience designed to strengthen the intelligence, judgement and responsibility with which senior leaders communicate.",
+  },
   workAndImpact: {
     title: "Communication Case Studies and Impact | Goldapples Media Associates",
     description:
