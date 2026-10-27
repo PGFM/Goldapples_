@@ -180,3 +180,28 @@ export function IconFramework(props: IconProps) {
     </svg>
   );
 }
+
+
+/** Mentorship — mentor & mentee with guiding star */
+export function IconMentorship(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="9" cy="8.5" r="3" />
+      <path d="M3.5 19.5c0-3 2.5-5 5.5-5s5.5 2 5.5 5" />
+      <circle cx="17" cy="9.5" r="2.2" />
+      <path d="M15 19.5c.3-2.1 1.8-3.7 4-4" />
+      <path d="M17 3l.6 1.4L19 5l-1.4.6L17 7l-.6-1.4L15 5l1.4-.6L17 3Z" />
+    </svg>
+  );
+}
+
+/** Executive Communication Intelligence — executive compass & crown emblem */
+export function IconExecutiveIntelligence(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+      <circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}

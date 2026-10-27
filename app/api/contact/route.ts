@@ -4,12 +4,15 @@ import { supportOptions, responseMethods } from "@/content/contact";
 import { footerContent } from "@/content/site";
 
 type ContactPayload = {
+  type?: "contact" | "mentorship";
   name: string;
-  organisation: string;
+  organisation?: string;
   email: string;
   phone: string;
-  supportType: string;
-  challenge: string;
+  supportType?: string;
+  mentorInterest?: string;
+  challenge?: string;
+  message?: string;
   responseMethod: string;
 };
 
@@ -17,10 +20,18 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function validate(body: Partial<ContactPayload>): string | null {
   if (!body.name?.trim()) return "Name is required.";
-  if (!body.organisation?.trim()) return "Organisation is required.";
   if (!body.email?.trim() || !EMAIL_RE.test(body.email))
     return "A valid email is required.";
   if (!body.phone?.trim()) return "Phone number is required.";
+
+  if (body.type === "mentorship") {
+    if (!body.mentorInterest?.trim()) return "Please select a mentor interest.";
+    if (!body.responseMethod?.trim())
+      return "Please select a preferred response method.";
+    return null;
+  }
+
+  if (!body.organisation?.trim()) return "Organisation is required.";
   if (!body.supportType || !supportOptions.includes(body.supportType)) {
     return "Please select what you need support with.";
   }
@@ -61,27 +72,54 @@ export async function POST(request: Request) {
     );
   }
 
-  const { name, organisation, email, phone, supportType, challenge, responseMethod } =
-    body as ContactPayload;
+  const {
+    type,
+    name,
+    organisation,
+    email,
+    phone,
+    supportType,
+    mentorInterest,
+    challenge,
+    message,
+    responseMethod,
+  } = body as ContactPayload;
 
   const resend = new Resend(apiKey);
+  const isMentorship = type === "mentorship";
 
   try {
     const { error } = await resend.emails.send({
       from: "Goldapples Website <onboarding@resend.dev>",
       to: footerContent.email,
       replyTo: email,
-      subject: `New brief from ${name} (${organisation})`,
-      html: `
-        <h2>New communication brief</h2>
+      subject: isMentorship
+        ? `New Mentorship Enquiry: ${mentorInterest} — ${name}`
+        : `New brief from ${name} (${organisation})`,
+      html: isMentorship
+        ? `
+        <h2>New Mentorship / Executive Advisory Enquiry</h2>
         <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-        <p><strong>Organisation:</strong> ${escapeHtml(organisation)}</p>
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
         <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
-        <p><strong>Support needed:</strong> ${escapeHtml(supportType)}</p>
+        <p><strong>Mentor Interest:</strong> ${escapeHtml(mentorInterest || "")}</p>
+        <p><strong>Preferred response method:</strong> ${escapeHtml(responseMethod)}</p>
+        ${
+          message
+            ? `<p><strong>Additional message:</strong></p><p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>`
+            : ""
+        }
+      `
+        : `
+        <h2>New communication brief</h2>
+        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+        <p><strong>Organisation:</strong> ${escapeHtml(organisation || "")}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
+        <p><strong>Support needed:</strong> ${escapeHtml(supportType || "")}</p>
         <p><strong>Preferred response method:</strong> ${escapeHtml(responseMethod)}</p>
         <p><strong>Challenge:</strong></p>
-        <p>${escapeHtml(challenge).replace(/\n/g, "<br />")}</p>
+        <p>${escapeHtml(challenge || "").replace(/\n/g, "<br />")}</p>
       `,
     });
 
