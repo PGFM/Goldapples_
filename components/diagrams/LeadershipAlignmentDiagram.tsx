@@ -4,14 +4,14 @@ const lanes = [
   "Internal Interpretation",
   "Behavioural Consistency",
   "Stakeholder Trust",
-  "Execution Outcomes"
+  "Execution Outcomes",
 ];
 
 export function LeadershipAlignmentDiagram() {
   return (
     <svg
       viewBox="0 0 520 140"
-      className="w-full min-w-[500px]"
+      className="w-full h-auto max-w-full"
       role="img"
       aria-label="Diagram: six parallel lanes representing alignment across intent, message, interpretation, behaviour, trust, and execution."
     >
@@ -35,7 +35,11 @@ export function LeadershipAlignmentDiagram() {
               fill="none"
               className="text-[#B98F3E] group-hover:translate-x-1 transition-all duration-300"
             />
-            <text x="0" y={y + 4} className="fill-[#12100D] group-hover:fill-[#B98F3E] font-sans text-[11px] font-semibold tracking-wide transition-colors duration-300">
+            <text
+              x="0"
+              y={y + 4}
+              className="fill-[#12100D] group-hover:fill-[#B98F3E] font-sans text-[11px] font-semibold tracking-wide transition-colors duration-300"
+            >
               {lane}
             </text>
           </g>

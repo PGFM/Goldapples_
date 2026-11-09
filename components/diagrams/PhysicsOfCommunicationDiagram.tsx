@@ -36,7 +36,7 @@ export function PhysicsOfCommunicationDiagram() {
   return (
     <svg
       viewBox="0 0 620 140"
-      className="w-full min-w-[600px]"
+      className="w-full h-auto max-w-full"
       onMouseMove={handleMove}
       onMouseLeave={() => setActive(null)}
       role="img"

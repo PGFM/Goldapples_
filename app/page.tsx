@@ -11,6 +11,10 @@ import { FinalCta } from "@/components/sections/home/FinalCta";
 export const metadata: Metadata = {
   title: { absolute: seo.home.title },
   description: seo.home.description,
+  openGraph: {
+    title: seo.home.title,
+    description: seo.home.description,
+  },
 };
 
 export default function Home() {

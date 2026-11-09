@@ -34,9 +34,9 @@ export function FrameworksShowcase({ frameworks }: { frameworks: Framework[] }) 
   const ActiveDiagram = diagrams[activeFw.id];
 
   return (
-    <div className="grid gap-8 lg:grid-cols-12">
+    <div className="grid gap-8 lg:grid-cols-12 w-full min-w-0">
       {/* Left Column: Vertical tab list (2-col on tablet, stacked on desktop) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-col gap-3 lg:col-span-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-col gap-3 lg:col-span-4 min-w-0">
         {frameworks.map((fw, i) => {
           const Icon = icons[i];
           const isActive = activeId === fw.id;
@@ -45,7 +45,7 @@ export function FrameworksShowcase({ frameworks }: { frameworks: Framework[] }) 
             <button
               key={fw.id}
               onClick={() => setActiveId(fw.id)}
-              className={`w-full flex items-start gap-4 p-5 rounded-[4px] text-left transition-all duration-300 border ${
+              className={`w-full min-w-0 flex items-start gap-4 p-4 sm:p-5 rounded-[4px] text-left transition-all duration-300 border ${
                 isActive
                   ? "bg-champagne/45 border-gold-deep shadow-[0_4px_16px_rgba(185,143,62,0.06)] text-ink"
                   : "bg-white border-graphite/10 text-steel hover:text-ink hover:border-graphite/20 hover:shadow-sm"
@@ -54,10 +54,12 @@ export function FrameworksShowcase({ frameworks }: { frameworks: Framework[] }) 
               <div className="flex-shrink-0 mt-0.5">
                 <IconSwatch icon={Icon} tone={isActive ? "gold" : "outline-dark"} />
               </div>
-              <div>
-                <span className={`block font-serif text-lg leading-snug transition-colors duration-200 ${
-                  isActive ? "text-ink font-semibold" : "text-graphite/90"
-                }`}>
+              <div className="min-w-0 flex-1">
+                <span
+                  className={`block font-serif text-base sm:text-lg leading-snug break-words transition-colors duration-200 ${
+                    isActive ? "text-ink font-semibold" : "text-graphite/90"
+                  }`}
+                >
                   {fw.title}
                 </span>
                 <span className="block mt-1 font-mono text-[10px] uppercase tracking-wider text-steel opacity-80">
@@ -70,7 +72,7 @@ export function FrameworksShowcase({ frameworks }: { frameworks: Framework[] }) 
       </div>
 
       {/* Right Column: Detailed visual card */}
-      <div className="lg:col-span-8">
+      <div className="lg:col-span-8 min-w-0">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeFw.id}
@@ -78,34 +80,36 @@ export function FrameworksShowcase({ frameworks }: { frameworks: Framework[] }) 
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="flex flex-col justify-between h-full border border-graphite/12 bg-white p-6 sm:p-8 lg:p-10 rounded-[4px] shadow-xs"
+            className="flex flex-col justify-between h-full w-full min-w-0 border border-graphite/12 bg-white p-5 sm:p-8 lg:p-10 rounded-[4px] shadow-xs overflow-hidden"
           >
-            <div className="mb-8">
-              <h2 className="font-serif text-3xl sm:text-4xl text-ink font-semibold leading-snug mb-6">
+            <div className="mb-8 min-w-0">
+              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-ink font-semibold leading-snug mb-6 break-words">
                 {activeFw.title}
               </h2>
-              
-              <div className="text-steel text-[15.5px] sm:text-[16.5px] leading-relaxed max-w-[65ch] space-y-4">
+
+              <div className="text-steel text-[15px] sm:text-[16.5px] leading-relaxed max-w-[65ch] space-y-4">
                 {activeFw.paragraphs.map((p, idx) => (
                   <p key={idx}>{p}</p>
                 ))}
-                
+
                 {activeFw.bullets && activeFw.bullets.length > 0 && (
                   <ul className="list-disc pl-5 mt-2 space-y-1.5 text-steel/90 marker:text-gold">
                     {activeFw.bullets.map((b, idx) => (
-                      <li key={idx} className="pl-1">{b}</li>
+                      <li key={idx} className="pl-1">
+                        {b}
+                      </li>
                     ))}
                   </ul>
                 )}
-                
+
                 {activeFw.closing && (
                   <p className="mt-4 font-medium text-ink/80">{activeFw.closing}</p>
                 )}
               </div>
             </div>
-            
-            <div className="w-full border border-graphite/10 bg-[#FAFAFA] py-8 sm:p-10 rounded-[2px] overflow-x-auto">
-              <div className="w-full px-6 sm:px-0 flex flex-col items-center justify-center min-h-[220px] sm:min-h-[280px]">
+
+            <div className="w-full min-w-0 border border-graphite/10 bg-[#FAFAFA] p-4 sm:p-8 lg:p-10 rounded-[2px] overflow-hidden">
+              <div className="w-full flex flex-col items-center justify-center min-h-[150px] sm:min-h-[240px]">
                 {ActiveDiagram}
               </div>
             </div>

@@ -124,7 +124,7 @@ export default function FrameworksPage() {
               Tools That Put Thinking to Work
             </h2>
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal delay={0.1} className="w-full min-w-0">
             <FrameworksShowcase frameworks={frameworks} />
           </Reveal>
         </Container>
