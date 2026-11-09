@@ -1,34 +1,99 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { supportOptions, responseMethods, contactContent } from "@/content/contact";
+import {
+  contactContent,
+  supportOptions,
+  responseMethods,
+} from "@/content/contact";
 
-const fieldClasses =
-  "border-graphite/20 focus:border-gold-deep w-full border-b bg-transparent px-0 py-3 text-base text-ink outline-none transition-colors duration-150 placeholder:text-steel/50";
-const labelClasses = "text-ink text-sm font-semibold";
-
-type Status = "idle" | "submitting" | "success" | "error";
+const formFields = [
+  {
+    name: "name",
+    label: "Name",
+    placeholder: "Your full name",
+    type: "text",
+    required: true,
+  },
+  {
+    name: "organisation",
+    label: "Organisation",
+    placeholder: "Your organisation or institution",
+    type: "text",
+    required: true,
+  },
+  {
+    name: "email",
+    label: "Email address",
+    placeholder: "Your email address",
+    type: "email",
+    required: true,
+  },
+  {
+    name: "phone",
+    label: "Phone number (optional)",
+    placeholder: "Phone number",
+    type: "tel",
+    required: false,
+  },
+  {
+    name: "interest",
+    label: "Area of interest",
+    type: "select",
+    options: supportOptions,
+    required: true,
+  },
+  {
+    name: "challenge",
+    label: "What is the communication challenge?",
+    placeholder: "Describe what is happening...",
+    type: "textarea",
+    required: true,
+  },
+  {
+    name: "outcome",
+    label: "What would a better outcome look like?",
+    placeholder: "Describe what you need to achieve...",
+    type: "textarea",
+    required: true,
+  },
+  {
+    name: "method",
+    label: "Preferred response",
+    type: "radio",
+    options: responseMethods,
+    required: true,
+  },
+];
 
 export function ContactForm() {
-  const [status, setStatus] = useState<Status>("idle");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setStatus("submitting");
-    setErrorMessage("");
+    setErrorMessage(null);
+    setSubmitting(true);
 
     const form = event.currentTarget;
     const data = new FormData(form);
+
+    const rawPhone = String(data.get("phone") ?? "").trim();
+    const phoneCode = String(data.get("phoneCode") ?? "+234").trim();
+
     const payload = {
-      name: String(data.get("name") ?? ""),
-      organisation: String(data.get("organisation") ?? ""),
-      email: String(data.get("email") ?? ""),
-      phone: String(data.get("phone") ?? ""),
-      supportType: String(data.get("supportType") ?? ""),
-      challenge: String(data.get("challenge") ?? ""),
-      responseMethod: String(data.get("responseMethod") ?? ""),
+      type: "contact" as const,
+      name: String(data.get("name") ?? "").trim(),
+      organisation: String(data.get("organisation") ?? "").trim(),
+      email: String(data.get("email") ?? "").trim(),
+      phone: rawPhone ? `${phoneCode} ${rawPhone}` : "",
+      interest: String(data.get("interest") ?? "").trim(),
+      challenge: String(data.get("challenge") ?? "").trim(),
+      outcome: String(data.get("outcome") ?? "").trim(),
+      method: String(data.get("method") ?? "").trim(),
     };
 
     try {
@@ -37,130 +102,220 @@ export function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      const result = await response.json();
+
+      const result = await response.json().catch(() => ({}));
+
       if (!response.ok) {
-        setErrorMessage(result.error ?? "Something went wrong. Please try again.");
-        setStatus("error");
+        setErrorMessage(
+          result.error ?? "We couldn't send your brief. Please try again.",
+        );
         return;
       }
-      setStatus("success");
+
+      setSubmitted(true);
       form.reset();
     } catch {
-      setErrorMessage("Something went wrong. Please try again.");
-      setStatus("error");
+      setErrorMessage(
+        "Unable to connect right now. Please try again or email us directly at " +
+          contactContent.email +
+          ".",
+      );
+    } finally {
+      setSubmitting(false);
     }
   }
 
-  if (status === "success") {
+  if (submitted) {
     return (
-      <div className="border-gold-deep border-l-2 py-6 pl-6">
-        <p className="text-ink font-serif text-2xl">Brief received.</p>
-        <p className="text-steel mt-3 max-w-[50ch] text-[15px] leading-relaxed">
-          Thank you — we&apos;ve received your brief and will respond using your preferred
-          method as soon as possible.
+      <div className="py-12 px-4 sm:px-8 text-center flex flex-col items-center">
+        <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-champagne text-gold-deep">
+          <CheckCircle2 className="h-8 w-8" />
+        </div>
+        <h3 className="font-serif text-3xl text-ink">Brief Received</h3>
+        <p className="mt-4 text-graphite text-[16.5px] leading-relaxed max-w-[46ch]">
+          Thank you for getting in touch. We have received your communication
+          brief and will respond through your preferred channel shortly.
         </p>
+        <div className="mt-8">
+          <Button
+            type="button"
+            variant="gold"
+            onClick={() => {
+              setSubmitted(false);
+              setErrorMessage(null);
+            }}
+            className="px-8 h-12 text-sm"
+          >
+            Send Another Brief
+          </Button>
+        </div>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-8" noValidate>
-      <div className="grid gap-8 sm:grid-cols-2">
-        <div className="flex flex-col gap-2">
-          <label htmlFor="name" className={labelClasses}>
-            Name
-          </label>
-          <input id="name" name="name" type="text" required className={fieldClasses} />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="organisation" className={labelClasses}>
-            Organisation
-          </label>
-          <input
-            id="organisation"
-            name="organisation"
-            type="text"
-            required
-            className={fieldClasses}
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="email" className={labelClasses}>
-            Email Address
-          </label>
-          <input id="email" name="email" type="email" required className={fieldClasses} />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="phone" className={labelClasses}>
-            Phone Number
-          </label>
-          <input id="phone" name="phone" type="tel" required className={fieldClasses} />
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-2">
-        <label htmlFor="supportType" className={labelClasses}>
-          What do you need support with?
-        </label>
-        <select id="supportType" name="supportType" required className={fieldClasses}>
-          <option value="">Select an option</option>
-          {supportOptions.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className="flex flex-col gap-2">
-        <label htmlFor="challenge" className={labelClasses}>
-          Briefly describe your challenge/need
-        </label>
-        <textarea
-          id="challenge"
-          name="challenge"
-          rows={5}
-          required
-          className={`${fieldClasses} resize-none`}
-        />
-      </div>
-
-      <fieldset className="flex flex-col gap-3">
-        <legend className={labelClasses}>Preferred response method</legend>
-        <div className="flex flex-wrap gap-6">
-          {responseMethods.map((method, i) => (
-            <label
-              key={method}
-              className="text-steel has-checked:text-ink flex items-center gap-2 text-sm"
-            >
-              <input
-                type="radio"
-                name="responseMethod"
-                value={method}
-                defaultChecked={i === 0}
-                required
-                className="accent-gold-deep h-4 w-4"
-              />
-              {method}
-            </label>
-          ))}
-        </div>
-      </fieldset>
-
-      {status === "error" && (
-        <p role="alert" className="text-sm text-red-700">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-10">
+      {errorMessage && (
+        <div
+          role="alert"
+          className="rounded-sm border border-red-600/20 bg-red-50 px-5 py-4 text-[15px] text-red-700"
+        >
           {errorMessage}
-        </p>
+        </div>
       )}
 
-      <Button
-        type="submit"
-        variant="gold"
-        disabled={status === "submitting"}
-        className="self-start disabled:opacity-60"
-      >
-        {status === "submitting" ? "Sending…" : contactContent.cta}
-      </Button>
+      {formFields.map((field) => {
+        if (field.type === "textarea") {
+          return (
+            <div key={field.name} className="flex flex-col gap-3">
+              <label
+                htmlFor={field.name}
+                className="text-ink font-semibold text-[15px]"
+              >
+                {field.label}{" "}
+                {field.required && <span className="text-gold-deep">*</span>}
+              </label>
+              <textarea
+                id={field.name}
+                name={field.name}
+                required={field.required}
+                rows={3}
+                className="w-full bg-transparent border-b border-graphite/20 pb-3 pt-1 text-ink text-[16px] focus:outline-none focus:border-gold-deep transition-colors resize-y"
+                placeholder={field.placeholder}
+              />
+            </div>
+          );
+        }
+
+        if (field.type === "select") {
+          return (
+            <div key={field.name} className="flex flex-col gap-3">
+              <label
+                htmlFor={field.name}
+                className="text-ink font-semibold text-[15px]"
+              >
+                {field.label}{" "}
+                {field.required && <span className="text-gold-deep">*</span>}
+              </label>
+              <select
+                id={field.name}
+                name={field.name}
+                required={field.required}
+                defaultValue=""
+                className="w-full bg-transparent border-b border-graphite/20 pb-3 pt-1 text-ink text-[16px] focus:outline-none focus:border-gold-deep transition-colors cursor-pointer"
+              >
+                <option value="" disabled>
+                  Select an area of interest
+                </option>
+                {field.options?.map((opt) => (
+                  <option key={opt} value={opt}>
+                    {opt}
+                  </option>
+                ))}
+              </select>
+            </div>
+          );
+        }
+
+        if (field.type === "radio") {
+          return (
+            <div key={field.name} className="flex flex-col gap-4">
+              <span className="text-ink font-semibold text-[15px]">
+                {field.label}{" "}
+                {field.required && <span className="text-gold-deep">*</span>}
+              </span>
+              <div className="flex flex-wrap gap-8">
+                {field.options?.map((opt, idx) => (
+                  <label
+                    key={opt}
+                    className="flex items-center gap-3 cursor-pointer group"
+                  >
+                    <input
+                      type="radio"
+                      name={field.name}
+                      value={opt}
+                      defaultChecked={idx === 0}
+                      required={field.required}
+                      className="w-4 h-4 text-gold-deep accent-gold-deep border-graphite/20 focus:ring-gold-deep"
+                    />
+                    <span className="text-[16px] text-graphite group-hover:text-ink transition-colors">
+                      {opt}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          );
+        }
+
+        if (field.type === "tel") {
+          return (
+            <div key={field.name} className="flex flex-col gap-3">
+              <label
+                htmlFor={field.name}
+                className="text-ink font-semibold text-[15px]"
+              >
+                {field.label}{" "}
+                {field.required && <span className="text-gold-deep">*</span>}
+              </label>
+              <div className="flex gap-4">
+                <select
+                  name={`${field.name}Code`}
+                  aria-label="Country code"
+                  className="w-[110px] shrink-0 bg-transparent border-b border-graphite/20 pb-3 pt-1 text-ink text-[16px] focus:outline-none focus:border-gold-deep transition-colors cursor-pointer"
+                  defaultValue="+234"
+                >
+                  <option value="+234">NG (+234)</option>
+                  <option value="+1">US (+1)</option>
+                  <option value="+44">UK (+44)</option>
+                  <option value="+27">ZA (+27)</option>
+                  <option value="+254">KE (+254)</option>
+                  <option value="+233">GH (+233)</option>
+                </select>
+                <input
+                  type="tel"
+                  id={field.name}
+                  name={field.name}
+                  required={field.required}
+                  className="flex-1 min-w-0 bg-transparent border-b border-graphite/20 pb-3 pt-1 text-ink text-[16px] focus:outline-none focus:border-gold-deep transition-colors"
+                  placeholder={field.placeholder}
+                />
+              </div>
+            </div>
+          );
+        }
+
+        return (
+          <div key={field.name} className="flex flex-col gap-3">
+            <label
+              htmlFor={field.name}
+              className="text-ink font-semibold text-[15px]"
+            >
+              {field.label}{" "}
+              {field.required && <span className="text-gold-deep">*</span>}
+            </label>
+            <input
+              type={field.type}
+              id={field.name}
+              name={field.name}
+              required={field.required}
+              className="w-full bg-transparent border-b border-graphite/20 pb-3 pt-1 text-ink text-[16px] focus:outline-none focus:border-gold-deep transition-colors"
+              placeholder={field.placeholder}
+            />
+          </div>
+        );
+      })}
+
+      <div className="pt-6">
+        <Button
+          type="submit"
+          variant="gold"
+          disabled={submitting}
+          className="w-full sm:w-auto px-10 h-14 text-base disabled:opacity-60"
+        >
+          {submitting ? "Sending..." : contactContent.cta}
+        </Button>
+      </div>
     </form>
   );
 }

@@ -23,11 +23,18 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Goldapples Media Associates",
+    default: "Communication Intelligence and Executive Advisory",
     template: "%s | Goldapples Media Associates",
   },
   description:
-    "Goldapples Media Associates helps leaders, organisations and development actors improve clarity, alignment, credibility and public impact through communication advisory, training and development communication.",
+    "Goldapples Media Associates is a communication advisory, executive education, and development communication firm helping leaders and institutions strengthen understanding, trust, alignment, and action.",
+  openGraph: {
+    title: "Communication Intelligence and Executive Advisory",
+    description:
+      "Goldapples Media Associates is a communication advisory, executive education, and development communication firm helping leaders and institutions strengthen understanding, trust, alignment, and action.",
+    siteName: "Goldapples Media Associates",
+    type: "website",
+  },
   icons: {
     icon: "/assets/logo/goldapples-icon-512.png",
     shortcut: "/assets/logo/goldapples-icon-512.png",

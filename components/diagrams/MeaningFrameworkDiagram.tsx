@@ -5,7 +5,7 @@ export function MeaningFrameworkDiagram() {
   return (
     <svg
       viewBox="0 0 520 140"
-      className="w-full min-w-[500px]"
+      className="w-full h-auto max-w-full"
       role="img"
       aria-label="Diagram: a message narrows from being sent to being passed, received, interpreted and finally acted upon."
     >

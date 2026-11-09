@@ -88,7 +88,7 @@ export function MentorshipModalButton({
 
     setSubmitting(true);
     try {
-      await fetch("/api/contact", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -100,13 +100,27 @@ export function MentorshipModalButton({
           message: message.trim(),
           responseMethod: preferredResponse,
         }),
-      }).catch(() => null);
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        setError(
+          result.error ??
+            "We couldn't submit your request right now. Please try again or email gold@goldapples.ng.",
+        );
+        return;
+      }
 
       setSubmitted(true);
       setName("");
       setEmail("");
       setPhone("");
       setMessage("");
+    } catch {
+      setError(
+        "Unable to connect right now. Please try again or email gold@goldapples.ng directly.",
+      );
     } finally {
       setSubmitting(false);
     }

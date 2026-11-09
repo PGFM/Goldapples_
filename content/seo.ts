@@ -1,9 +1,8 @@
 export const seo = {
   home: {
-    title:
-      "Communication Advisory and Executive Training in Nigeria | Goldapples Media Associates",
+    title: "Communication Intelligence and Executive Advisory",
     description:
-      "Goldapples Media Associates helps leaders, organisations and development actors improve clarity, alignment, credibility and public impact through communication advisory, training and development communication.",
+      "Goldapples Media Associates is a communication advisory, executive education, and development communication firm helping leaders and institutions strengthen understanding, trust, alignment, and action.",
   },
   about: {
     title: "About Goldapples Media Associates | Communication Intelligence and Advisory",
